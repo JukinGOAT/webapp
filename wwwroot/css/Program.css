@@ -2085,7 +2085,7 @@ img {
     /* I da bude centrirana unutar roditelja: */
     display: block;
     margin: 0 auto;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+    
 }
 .card-body {
     padding: 1rem;
@@ -2100,7 +2100,4 @@ img {
     margin: 0;
     color: #555;
     font-size: .9rem;
-}
-.accordion-header{
-    background:transparent;
 }
