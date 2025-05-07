@@ -1,5 +1,4 @@
-﻿// Controllers/MessagesController.cs
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using webapp.Models;
 using webapp.ViewModels;
 using Microsoft.EntityFrameworkCore;
@@ -15,17 +14,16 @@ namespace webapp.Controllers
         [HttpGet]
         public async Task<IActionResult> Index(int? chatWithId)
         {
-            var currentUser = await _context.UserProfiles.FirstOrDefaultAsync(); // simulacija prijavljenog
+            var currentUser = await _context.UserProfiles.FirstOrDefaultAsync(); 
             if (currentUser == null) return NotFound();
 
-            // Učitaj sve poruke koje uključuju trenutnog korisnika
+            
             var messages = await _context.Messages
                 .Where(m => m.SenderId == currentUser.Id || m.ReceiverId == currentUser.Id)
                 .Include(m => m.Sender)
                 .Include(m => m.Receiver)
                 .ToListAsync();
 
-            // Grupiraj poruke po drugom korisniku i uzmi najnovije
             var recentChats = messages
                 .GroupBy(m => m.SenderId == currentUser.Id ? m.Receiver : m.Sender)
                 .Select(g => new
@@ -42,7 +40,6 @@ namespace webapp.Controllers
 
             var profile = currentUser;
 
-            // Lista svih kontakata sortirana po najnovijim porukama
             var convoPartners = messages
                 .GroupBy(m => m.SenderId == currentUser.Id ? m.ReceiverId : m.SenderId)
                 .Select(g => new
@@ -59,12 +56,10 @@ namespace webapp.Controllers
                 .Where(p => contactIds.Contains(p.Id))
                 .ToListAsync();
 
-            // Redoslijed profila prema poslanim porukama
             contacts = convoPartners
                 .Select(c => contacts.First(p => p.Id == c.UserId))
                 .ToList();
 
-            // Učitaj poruke iz otvorenog razgovora
             List<Message> chatHistory = new();
             if (chatWithId.HasValue)
             {
@@ -79,7 +74,7 @@ namespace webapp.Controllers
                 {
                     var userToAdd = await _context.UserProfiles.FirstOrDefaultAsync(p => p.Id == chatWithId.Value);
                     if (userToAdd != null)
-                        contacts.Insert(0, userToAdd); // Dodaj na početak kao najnovije
+                        contacts.Insert(0, userToAdd); 
                 }
             }
 
@@ -113,7 +108,7 @@ namespace webapp.Controllers
                 SenderId = me.Id,
                 ReceiverId = toUserId,
                 Body = body,
-                SentAt = DateTime.UtcNow
+                SentAt = DateTimeOffset.UtcNow
             });
 
             await _context.SaveChangesAsync();

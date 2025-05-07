@@ -123,10 +123,10 @@ public class FakultetController : Controller
     {
         if (!string.IsNullOrWhiteSpace(sadrzaj))
         {
-
+            var user = _context.UserProfiles.FirstOrDefault();
             var instrukcija = new Instrukcija
             {
-                Autor = "Mateja Milanović",
+                Autor = user?.FullName ?? "Trenutni korisnik",
                 Sadrzaj = sadrzaj
             };
             _context.Instrukcije.Add(instrukcija);

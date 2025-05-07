@@ -13,7 +13,7 @@ namespace webapp.Models
         public Profile Receiver { get; set; } = null!;
         [Required]
         public string Body { get; set; } = null!;
-        public DateTime SentAt { get; set; }
+        public DateTimeOffset SentAt { get; set; }
         
     }
 }

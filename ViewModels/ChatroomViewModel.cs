@@ -11,9 +11,9 @@ namespace webapp.ViewModels
 
         public string NewMessage { get; set; }
         public List<Message> Messages { get; set; }
-        public List<Profile> Contacts { get; set; } = new();  // prijatelji
-        public int? ActiveChatUserId { get; set; }            // s kim razgovaramo
-        public List<Message> History { get; set; } = new();   // poruke u razgovoru
+        public List<Profile> Contacts { get; set; } = new();  
+        public int? ActiveChatUserId { get; set; }            
+        public List<Message> History { get; set; } = new();   
         public Profile Me { get; set; }
         public Profile Profile { get; set; }
         public string Body { get; set; }

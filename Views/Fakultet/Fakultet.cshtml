@@ -7,6 +7,22 @@
         ? Model.Kolegiji.FirstOrDefault(c => c.Id == selectedCourseId)
         : null;
 }
+@{
+    // 1) Prvo, na vrhu view-a dohvatimo iz QueryStringa
+    //    ono što kontroler prosljeđuje kao ?tab=4 ili ?tab=2 itd.
+
+    if (string.IsNullOrEmpty(activeTab))
+    {
+        activeTab = "1";    // zadani tab ako Query nema parametar
+    }
+
+    // 2) Definiramo validne tabove
+    var validTabs = new[] { "1", "2", "3", "4", "5" };
+    // 3) I sad osiguramo da smo u jednom od tih tabova
+    var currentTab = validTabs.Contains(activeTab)
+    ? activeTab
+    : "1";
+}
 
 <div class="layout">
     <div class="sidebar fakultet-sidebar">
@@ -80,29 +96,33 @@
             </div>
         }
 
-        else if (new[] { "1", "2", "3", "4", "5" }.Contains(activeTab))
+       
+
+        else if (validTabs.Contains(activeTab))
         {
             if (Model.AktivniKolegij == null)
             {
                 <div class="semestar">
+                    <!-- Prvi dio kolegija -->
                     <h4 class="fakultet-title">Semestar X</h4>
                     <div class="fcards">
                         @foreach (var k in Model.Kolegiji.Take(8))
                         {
-                            <form method="get" asp-action="Index" asp-controller="Fakultet">
-                                <input type="hidden" name="tab" value="4" />
+                            <form method="get" asp-controller="Fakultet" asp-action="Index">
+                                <input type="hidden" name="tab" value="@currentTab" />
                                 <input type="hidden" name="kolegijId" value="@k.Id" />
                                 <button type="submit" class="fcard">@k.Naziv</button>
                             </form>
                         }
                     </div>
 
+                    <!-- Drugi dio kolegija -->
                     <h4 class="fakultet-title">Semestar Y</h4>
                     <div class="fcards">
                         @foreach (var k in Model.Kolegiji.Skip(8))
                         {
-                            <form method="get" asp-action="Index" asp-controller="Fakultet">
-                                <input type="hidden" name="tab" value="4" />
+                            <form method="get" asp-controller="Fakultet" asp-action="Index">
+                                <input type="hidden" name="tab" value="@currentTab" />
                                 <input type="hidden" name="kolegijId" value="@k.Id" />
                                 <button type="submit" class="fcard">@k.Naziv</button>
                             </form>
@@ -110,23 +130,91 @@
                     </div>
                 </div>
             }
+
 
             @if (Model.AktivniKolegij != null)
             {
                 <div class="kolegij-detail">
                     <h4>@Model.AktivniKolegij.Naziv</h4>
                     <p>@Model.AktivniKolegij.Opis</p>
-                    <div class="faq-section">
-                        @foreach (var lekcija in Model.AktivniKolegij.Lekcije)
-                        {
-                            <details class="faq-item">
-                                <summary>@lekcija</summary>
-                                <div class="faq-content">Sadržaj za "@lekcija"</div>
-                            </details>
-                        }
-                    </div>
+
+                    <!-- Ovdje je jedini details za Praktični zadatci -->
+                    <details class="faq-item">
+                        <summary class="accordion-header">
+                            Praktični zadatci
+                        </summary>
+
+                        <!-- Ovo je skriveni sadržaj koji se pokaže samo kad klikneš summary -->
+                        <div class="cards-grid">
+                            <!-- Kartica 1 -->
+                            <div class="card fcard">
+                                
+                                <img src="~/Images/vj1.png" class="card-img-top" alt="vježba 1" />
+                                <div class="card-body">
+                                    <h6 class="card-title">Cinematic Content Creation</h6>
+                                    <p class="card-text">
+                                        Vježba se nalazi na linku Learn Unity gdje se mogu pronaći i ostale vježbe…
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- Kartica 2 -->
+                            <div class="card fcard">
+                                
+                                <img src="~/Images/vj2.png" class="card-img-top" alt="bug-ovi" />
+                                <div class="card-body">
+                                    <h6 class="card-title">Potencijalni bug-ovi u Unity-em</h6>
+                                    <p class="card-text">
+                                        Dosta često se ovaj bug može pojaviti. Stalno spremajte svoje radove dok ih uređujete...
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- Kartica 3 -->
+                            <div class="card fcard">
+                                
+                                <img src="~/Images/vj3.png" class="card-img-top" alt="terrain" />
+                                <div class="card-body">
+                                    <h6 class="card-title">Dodavanje Terrain-a</h6>
+                                    <p class="card-text">
+                                        Kod dodavanja Terrain-a, Unity već ima neke presete…
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </details>
+                
+
+                    <!-- Teorija -->
+                    <details class="faq-item">
+                        <summary class="accordion-header">Teorija</summary>
+                        <div class="cards-grid">
+                            <!-- Kartica 1 za Teoriju -->
+                            <div class="card fcard">
+                                
+                                <img src="~/Images/teo1.png" class="card-img-top" alt="teorija" />
+                                <div class="card-body">
+                                    <h6 class="card-title">Creative Common Licenses</h6>
+                                    <p class="card-text">
+                                        Ne smije se zaboraviti da svaki Asset ima svoju licencu i prije upotrebe u svom radu, mora se provjeriti od koje “jačine” je licenca.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="card fcard">
+                                
+                                <img src="~/Images/teo2.png" class="card-img-top" alt="teorija" />
+                                <div class="card-body">
+                                    <h6 class="card-title">Animation Libraries - Mixamo</h6>
+                                    <p class="card-text">
+                                        Najbolje mjesto za pronalazak character animacija ako ne znate animirati. Evo nekih savjeta za non-developere.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </details>
                 </div>
             }
+
+                        
+            
         }
 
         else if (activeTab == "Grupe")
