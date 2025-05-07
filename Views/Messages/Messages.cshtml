@@ -20,7 +20,7 @@
                 <li class="chat-contact contact-card @(isActive ? "active" : "")">
                     <a href="@Url.Action("Index", "Messages", new { chatWithId = c.Id })">
                         <div class="chat-contact-avatar">
-                            <img src="@Url.Content($"~/images/{c.ProfileImageUrl}")"
+                            <img src="@Url.Content($"~/Images/{c.ProfileImageUrl}")"
                                  alt="@c.FullName"
                                  class="contact-avatar" />
                             <span class="chat-status @(c.IsOnline ? "online" : "offline")"></span>
@@ -47,7 +47,7 @@
             var peer = Model.Contacts.First(c => c.Id == Model.ActiveChatUserId);
             <header class="chat-header">
                 <div class="avatar-wrapper">
-                    <img src="@Url.Content($"~/images/{peer.ProfileImageUrl}")"
+                    <img src="@Url.Content($"~/Images/{peer.ProfileImageUrl}")"
                          alt="@peer.FullName"
                          class="avatar-lg" />
                     <h3>@peer.FullName</h3>
@@ -62,7 +62,7 @@
                         <div class="message-row @(mine ? "mine" : "theirs")">
                             @if (!mine)
                             {
-                                <img src="@Url.Content($"~/images/{peer.ProfileImageUrl}")" alt="" class="avatar-sm" />
+                                <img src="@Url.Content($"~/Images/{peer.ProfileImageUrl}")" alt="" class="avatar-sm" />
                             }
                             <div class="message-block">
                                 <div class="message-bubble">@m.Body</div>
@@ -70,7 +70,7 @@
                             </div>
                             @if (mine)
                             {
-                                <img src="@Url.Content($"~/images/{Model.Me.ProfileImageUrl}")" alt="" class="avatar-sm" />
+                                <img src="@Url.Content($"~/Images/{Model.Me.ProfileImageUrl}")" alt="" class="avatar-sm" />
                             }
                         </div>
                     }

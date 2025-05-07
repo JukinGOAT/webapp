@@ -19,7 +19,7 @@
     @foreach (var g in Model.OtherGroups)
     {
         <div class="group-card">
-            <img src="~/images/@g.ImageUrl" alt="@g.Name" />
+            <img src="~/Images/@g.ImageUrl" alt="@g.Name" />
             <p>@g.Name</p>
             <form method="post" asp-action="JoinGroup" asp-controller="Groups" asp-route-id="@g.Id">
                 <button type="submit" class="join-button">+</button>
