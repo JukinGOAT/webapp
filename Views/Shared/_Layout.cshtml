@@ -83,7 +83,7 @@
         <div class="user-profile">
             <form method="post" action="/Profile/OtvoriProfil">
                 <button type="submit" class="profile-icon">
-                    <img src="@Url.Content("~/images/" + (profile?.ProfileImageUrl ?? "default.png"))"
+                    <img src="@Url.Content("~/Images/" + (profile?.ProfileImageUrl ?? "default.png"))"
                          alt="Profil" />
                 </button>
             </form>
@@ -95,9 +95,8 @@
                 <div class="profile-card">
                     <button class="close-button" onclick="closeProfilePopup()">×</button>
 
-                    <img class="cover-image-img" src="@($"{profile?.CoverImageUrl}")">
-                    <img src="@($"/images/{profile?.ProfileImageUrl}")" class="profile-avatar-popup" alt="Profil" />
-
+                    <img class="cover-image-img" src="@Url.Content("~/Images/" + profile?.CoverImageUrl)">
+                    <img src="@Url.Content("~/Images/" + profile?.ProfileImageUrl)" class="profile-avatar-popup" alt="Profil" />
 
 
                     <h3>@profile?.FullName</h3>
@@ -128,7 +127,7 @@
 
     <div class="layout">
         <div class="sidebar">
-            <button onclick="location.href='@Url.Action("Index", "Fakultet")'" class="icon-button"><img class="sidebar-icon" alt="Fakultet" src="@Url.Content("~/images/images.png")" /></button>
+            <button onclick="location.href='@Url.Action("Index", "Fakultet")'" class="icon-button"><img class="sidebar-icon" alt="Fakultet" src="@Url.Content("~/Images/images.png")" /></button>
 
             <button onclick="location.href='@Url.Action("Index", "Forum")'" class="icon-button">👥</button>
 
