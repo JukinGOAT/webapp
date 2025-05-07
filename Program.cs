@@ -28,21 +28,9 @@ namespace webapp
             });
 
             builder.Services.AddDbContext<AppDbContext>(options =>
-            {
-                var connectionString = builder.Environment.IsProduction()
-                    ? Environment.GetEnvironmentVariable("DATABASE_URL")
-                    : builder.Configuration.GetConnectionString("DefaultConnection");
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-
-                if (builder.Environment.IsProduction() && !string.IsNullOrEmpty(connectionString) && connectionString.Contains("postgres://"))
-                {
-                    connectionString += ";SslMode=Require";
-                }
-
-                options.UseNpgsql(connectionString);
-            });
-
-
+            
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
