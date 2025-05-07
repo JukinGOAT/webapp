@@ -1,0 +1,27 @@
+﻿@* @model webapp.ViewModels.HomePageViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Naslovna";
+}
+
+<div class="main">
+    <div class="cards">
+        @foreach (var ev in Model.Events)
+        {
+            <div class="card">
+                <img src="@ev.ImageUrl" alt="@ev.Title" />
+                <div class="card-info">
+                    <div class="date-title-row">
+                        <strong class="date">Datum događaja:</strong>
+                        <span>@ev.DateRange</span>
+                    </div>
+                    <strong class="card-title">@ev.Title</strong>
+                    <p>@ev.Description</p>
+                    <a href="#">@ev.AdditionalInfo</a>
+                    <span class="date">@ev.DatePublished</span>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+ *@

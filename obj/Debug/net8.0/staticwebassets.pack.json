@@ -1,0 +1,233 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\Images\\ana.jpg",
+      "PackagePath": "staticwebassets\\Images\\ana.jpg"
+    },
+    {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\Images\\auforux.png",
+      "PackagePath": "staticwebassets\\Images\\auforux.png"
+    },
+    {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\Images\\back.jpg",
+      "PackagePath": "staticwebassets\\Images\\back.jpg"
+    },
+    {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\Images\\best2025.png",
+      "PackagePath": "staticwebassets\\Images\\best2025.png"
+    },
+    {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\Images\\blas.jpg",
+      "PackagePath": "staticwebassets\\Images\\blas.jpg"
+    },
+    {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\Images\\css2025.png",
+      "PackagePath": "staticwebassets\\Images\\css2025.png"
+    },
+    {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\Images\\devfest.png",
+      "PackagePath": "staticwebassets\\Images\\devfest.png"
+    },
+    {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\Images\\dk2025.png",
+      "PackagePath": "staticwebassets\\Images\\dk2025.png"
+    },
+    {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\Images\\faks1.png",
+      "PackagePath": "staticwebassets\\Images\\faks1.png"
+    },
+    {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\Images\\faks2.png",
+      "PackagePath": "staticwebassets\\Images\\faks2.png"
+    },
+    {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\Images\\finals.png",
+      "PackagePath": "staticwebassets\\Images\\finals.png"
+    },
+    {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\Images\\fiz.png",
+      "PackagePath": "staticwebassets\\Images\\fiz.png"
+    },
+    {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\Images\\fotoesej.png",
+      "PackagePath": "staticwebassets\\Images\\fotoesej.png"
+    },
+    {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\Images\\fotografija.png",
+      "PackagePath": "staticwebassets\\Images\\fotografija.png"
+    },
+    {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\Images\\grafit.png",
+      "PackagePath": "staticwebassets\\Images\\grafit.png"
+    },
+    {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\Images\\holo.png",
+      "PackagePath": "staticwebassets\\Images\\holo.png"
+    },
+    {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\Images\\images.png",
+      "PackagePath": "staticwebassets\\Images\\images.png"
+    },
+    {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\Images\\ivan.jpg",
+      "PackagePath": "staticwebassets\\Images\\ivan.jpg"
+    },
+    {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\Images\\ivana.jpg",
+      "PackagePath": "staticwebassets\\Images\\ivana.jpg"
+    },
+    {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\Images\\izbori2025.png",
+      "PackagePath": "staticwebassets\\Images\\izbori2025.png"
+    },
+    {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\Images\\jana.jpg",
+      "PackagePath": "staticwebassets\\Images\\jana.jpg"
+    },
+    {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\Images\\logo.png",
+      "PackagePath": "staticwebassets\\Images\\logo.png"
+    },
+    {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\Images\\marko.jpg",
+      "PackagePath": "staticwebassets\\Images\\marko.jpg"
+    },
+    {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\Images\\nina.jpg",
+      "PackagePath": "staticwebassets\\Images\\nina.jpg"
+    },
+    {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\Images\\prof.jpg",
+      "PackagePath": "staticwebassets\\Images\\prof.jpg"
+    },
+    {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\Images\\umag.jpg",
+      "PackagePath": "staticwebassets\\Images\\umag.jpg"
+    },
+    {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\Images\\uniart.png",
+      "PackagePath": "staticwebassets\\Images\\uniart.png"
+    },
+    {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\Images\\unifest.png",
+      "PackagePath": "staticwebassets\\Images\\unifest.png"
+    },
+    {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\css\\Fonts\\Montserrat-Italic-VariableFont_wght.ttf",
+      "PackagePath": "staticwebassets\\css\\Fonts\\Montserrat-Italic-VariableFont_wght.ttf"
+    },
+    {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\css\\Fonts\\Montserrat-VariableFont_wght.ttf",
+      "PackagePath": "staticwebassets\\css\\Fonts\\Montserrat-VariableFont_wght.ttf"
+    },
+    {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\css\\Fonts\\Montserrat.zip",
+      "PackagePath": "staticwebassets\\css\\Fonts\\Montserrat.zip"
+    },
+    {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\css\\Fonts\\OFL.txt",
+      "PackagePath": "staticwebassets\\css\\Fonts\\OFL.txt"
+    },
+    {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\css\\Fonts\\README.txt",
+      "PackagePath": "staticwebassets\\css\\Fonts\\README.txt"
+    },
+    {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\css\\Fonts\\static\\Montserrat-Black.ttf",
+      "PackagePath": "staticwebassets\\css\\Fonts\\static\\Montserrat-Black.ttf"
+    },
+    {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\css\\Fonts\\static\\Montserrat-BlackItalic.ttf",
+      "PackagePath": "staticwebassets\\css\\Fonts\\static\\Montserrat-BlackItalic.ttf"
+    },
+    {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\css\\Fonts\\static\\Montserrat-Bold.ttf",
+      "PackagePath": "staticwebassets\\css\\Fonts\\static\\Montserrat-Bold.ttf"
+    },
+    {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\css\\Fonts\\static\\Montserrat-BoldItalic.ttf",
+      "PackagePath": "staticwebassets\\css\\Fonts\\static\\Montserrat-BoldItalic.ttf"
+    },
+    {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\css\\Fonts\\static\\Montserrat-ExtraBold.ttf",
+      "PackagePath": "staticwebassets\\css\\Fonts\\static\\Montserrat-ExtraBold.ttf"
+    },
+    {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\css\\Fonts\\static\\Montserrat-ExtraBoldItalic.ttf",
+      "PackagePath": "staticwebassets\\css\\Fonts\\static\\Montserrat-ExtraBoldItalic.ttf"
+    },
+    {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\css\\Fonts\\static\\Montserrat-ExtraLight.ttf",
+      "PackagePath": "staticwebassets\\css\\Fonts\\static\\Montserrat-ExtraLight.ttf"
+    },
+    {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\css\\Fonts\\static\\Montserrat-ExtraLightItalic.ttf",
+      "PackagePath": "staticwebassets\\css\\Fonts\\static\\Montserrat-ExtraLightItalic.ttf"
+    },
+    {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\css\\Fonts\\static\\Montserrat-Italic.ttf",
+      "PackagePath": "staticwebassets\\css\\Fonts\\static\\Montserrat-Italic.ttf"
+    },
+    {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\css\\Fonts\\static\\Montserrat-Light.ttf",
+      "PackagePath": "staticwebassets\\css\\Fonts\\static\\Montserrat-Light.ttf"
+    },
+    {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\css\\Fonts\\static\\Montserrat-LightItalic.ttf",
+      "PackagePath": "staticwebassets\\css\\Fonts\\static\\Montserrat-LightItalic.ttf"
+    },
+    {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\css\\Fonts\\static\\Montserrat-Medium.ttf",
+      "PackagePath": "staticwebassets\\css\\Fonts\\static\\Montserrat-Medium.ttf"
+    },
+    {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\css\\Fonts\\static\\Montserrat-MediumItalic.ttf",
+      "PackagePath": "staticwebassets\\css\\Fonts\\static\\Montserrat-MediumItalic.ttf"
+    },
+    {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\css\\Fonts\\static\\Montserrat-Regular.ttf",
+      "PackagePath": "staticwebassets\\css\\Fonts\\static\\Montserrat-Regular.ttf"
+    },
+    {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\css\\Fonts\\static\\Montserrat-SemiBold.ttf",
+      "PackagePath": "staticwebassets\\css\\Fonts\\static\\Montserrat-SemiBold.ttf"
+    },
+    {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\css\\Fonts\\static\\Montserrat-SemiBoldItalic.ttf",
+      "PackagePath": "staticwebassets\\css\\Fonts\\static\\Montserrat-SemiBoldItalic.ttf"
+    },
+    {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\css\\Fonts\\static\\Montserrat-Thin.ttf",
+      "PackagePath": "staticwebassets\\css\\Fonts\\static\\Montserrat-Thin.ttf"
+    },
+    {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\css\\Fonts\\static\\Montserrat-ThinItalic.ttf",
+      "PackagePath": "staticwebassets\\css\\Fonts\\static\\Montserrat-ThinItalic.ttf"
+    },
+    {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\css\\Program.css",
+      "PackagePath": "staticwebassets\\css\\Program.css"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.webapp.props",
+      "PackagePath": "build\\webapp.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.webapp.props",
+      "PackagePath": "buildMultiTargeting\\webapp.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.webapp.props",
+      "PackagePath": "buildTransitive\\webapp.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.webapp.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.webapp.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

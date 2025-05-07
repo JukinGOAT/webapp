@@ -1,0 +1,29 @@
+﻿@model webapp.ViewModels.GroupsPageViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Tvoje grupe</h2>
+<div class="group-section">
+    @foreach (var g in Model.MemberGroups)
+    {
+        <div class="group-card">
+            <img src="~/images/@g.ImageUrl" alt="@g.Name" />
+            <p>@g.Name</p>
+        </div>
+    }
+</div>
+
+<h2>Ostale grupe</h2>
+<div class="group-section">
+    @foreach (var g in Model.OtherGroups)
+    {
+        <div class="group-card">
+            <img src="~/images/@g.ImageUrl" alt="@g.Name" />
+            <p>@g.Name</p>
+            <form method="post" asp-action="JoinGroup" asp-controller="Groups" asp-route-id="@g.Id">
+                <button type="submit" class="join-button">+</button>
+            </form>
+        </div>
+    }
+</div>

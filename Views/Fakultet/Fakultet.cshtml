@@ -1,0 +1,248 @@
+@model webapp.ViewModels.FakultetViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var activeTab = ViewBag.ActiveTab as string ?? "Opce";
+    var selectedCourseId = ViewBag.SelectedCourseId as int?;
+    var selectedCourse = selectedCourseId != null
+        ? Model.Kolegiji.FirstOrDefault(c => c.Id == selectedCourseId)
+        : null;
+}
+
+<div class="layout">
+    <div class="sidebar fakultet-sidebar">
+        <div class="fsidebar-tabs">
+            @{
+                var tabs = new List<(string Value, string Label)>
+            {
+            ("Opce", "Opće informacije"),
+            ("_divider", ""),
+            ("1", "1. godina"),
+            ("2", "2. godina"),
+            ("3", "3. godina"),
+            ("4", "4. godina"),
+            ("5", "5. godina"),
+            ("_divider", ""),
+            ("Grupe", "Grupe"),
+            ("_divider", ""),
+            ("Instrukcije", "Instrukcije")
+            };
+            }
+
+            @foreach (var tab in tabs)
+            {
+                if (tab.Value == "_divider")
+                {
+                    <hr class="tab-divider" />
+                    continue;
+                }
+
+                <form method="get" asp-action="Index" asp-controller="Fakultet">
+                    <input type="hidden" name="tab" value="@tab.Value" />
+                    <button type="submit" class="fsidebar-tab @(tab.Value == activeTab ? "active" : "")">
+                        # @tab.Label
+                    </button>
+                </form>
+            }
+        </div>
+    </div>
+
+    <div class="main fakultet-content">
+        @if (activeTab == "Opce")
+        {
+            <h3 class="fakultet-title">O Grafičkom fakultetu</h3>
+            <div class="image-row">
+                <img src="~/images/faks1.png" alt="Zgrada fakulteta" />
+                <img src="~/images/faks2.png" alt="Igralište fakulteta" />
+            </div>
+            <div class="fakultet-info">
+                <p><strong>Lokacija:</strong> Getaldićeva ul. 2, 10000, Zagreb</p>
+                <p><strong>Telefon:</strong> <a href="tel:012371080">01 2371 080</a></p>
+                <p><strong>Službena stranica:</strong> <a href="https://www.grf.unizg.hr">https://www.grf.unizg.hr</a></p>
+                <p><strong>Email djelatnika:</strong> <a href="https://www.grf.unizg.hr/imenik">https://www.grf.unizg.hr/imenik</a></p>
+                <p><strong>Katedre:</strong> <a href="https://www.grf.unizg.hr/katedre/">https://www.grf.unizg.hr/katedre/</a></p>
+            </div>
+
+            <div class="faq-section">
+                @foreach (var faq in Model.FAQs)
+                {
+                    <details class="faq-item">
+                        <summary>
+                            <span>@faq.Pitanje</span>
+                            <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </summary>
+                        <div class="faq-content">
+                            <p>@faq.Odgovor</p>
+                        </div>
+                    </details>
+                }
+            </div>
+        }
+
+        else if (activeTab == "4")
+        {
+            if (Model.AktivniKolegij == null)
+            {
+                <div class="semestar">
+                    <h4 class="fakultet-title">Semestar X</h4>
+                    <div class="fcards">
+                        @foreach (var k in Model.Kolegiji.Take(8))
+                        {
+                            <form method="get" asp-action="Index" asp-controller="Fakultet">
+                                <input type="hidden" name="tab" value="4" />
+                                <input type="hidden" name="kolegijId" value="@k.Id" />
+                                <button type="submit" class="fcard">@k.Naziv</button>
+                            </form>
+                        }
+                    </div>
+
+                    <h4 class="fakultet-title">Semestar Y</h4>
+                    <div class="fcards">
+                        @foreach (var k in Model.Kolegiji.Skip(8))
+                        {
+                            <form method="get" asp-action="Index" asp-controller="Fakultet">
+                                <input type="hidden" name="tab" value="4" />
+                                <input type="hidden" name="kolegijId" value="@k.Id" />
+                                <button type="submit" class="fcard">@k.Naziv</button>
+                            </form>
+                        }
+                    </div>
+                </div>
+            }
+
+            @if (Model.AktivniKolegij != null)
+            {
+                <div class="kolegij-detail">
+                    <h4>@Model.AktivniKolegij.Naziv</h4>
+                    <p>@Model.AktivniKolegij.Opis</p>
+                    <div class="faq-section">
+                        @foreach (var lekcija in Model.AktivniKolegij.Lekcije)
+                        {
+                            <details class="faq-item">
+                                <summary>@lekcija</summary>
+                                <div class="faq-content">Sadržaj za "@lekcija"</div>
+                            </details>
+                        }
+                    </div>
+                </div>
+            }
+        }
+
+        else if (activeTab == "Grupe")
+        {
+            <div class="group-section">
+                <h4 class="group-heading">Tvoje grupe</h4>
+                <div class="group-grid">
+                    <div class="group-card">
+                        <img src="~/images/holo.png" alt="HoloGRF" />
+                        <div class="group-text">HoloGRF</div>
+                    </div>
+                    <div class="group-card">
+                        <img src="~/images/fotoesej.png" alt="Fotoesej" />
+                        <div class="group-text">Fotoesej</div>
+                    </div>
+                </div>
+
+                <h4 class="group-heading">Ostale grupe</h4>
+                <div class="group-grid">
+                    <div class="group-card group-addable">
+                        <img src="~/images/fotografija.png" alt="Fotografija" />
+                        <div class="group-text">Fotografija</div>
+                        <div class="add-circle">+</div>
+                    </div>
+                    <div class="group-card group-addable">
+                        <img src="~/images/fiz.png" alt="Fizičari" />
+                        <div class="group-text">Fizičari</div>
+                        <div class="add-circle">+</div>
+                    </div>
+                    <div class="group-card group-addable">
+                        <img src="~/images/grafit.png" alt="GrafiT" />
+                        <div class="group-text">GrafIT</div>
+                        <div class="add-circle">+</div>
+                    </div>
+                    <div class="group-card group-addable">
+                        <img src="~/images/uniart.png" alt="UniART" />
+                        <div class="group-text">UniART</div>
+                        <div class="add-circle">+</div>
+                    </div>
+                </div>
+            </div>
+
+        }
+        else if (activeTab == "Instrukcije")
+        {
+            <div class="instrukcije-panel container">
+                <form action="@Url.Action("DodajInstrukciju", "Fakultet")" method="post" class="new-post">
+                    @Html.AntiForgeryToken()
+                    <textarea name="sadrzaj" placeholder="Napiši objavu"></textarea>
+                    
+                    <button type="submit">Objavi</button>
+                    
+                </form>
+
+
+
+                <div class="instrukcije-grid">
+                    @foreach (var i in Model.Instrukcije)
+                    {
+                        <div class="instrukcija-card" data-id="@i.Id">
+                            <strong>@i.Autor</strong>
+                            <p>@i.Sadrzaj</p>
+
+                            <!-- Plus forma/gumb -->
+                            <form action="@Url.Action("ZatraziInstrukciju","Fakultet", new { id = i.Id })"
+                                  method="post"
+                                  class="plus-form">
+                                @Html.AntiForgeryToken()
+                                <button type="button" class="plus-button">+</button>
+                            </form>
+
+                            <!-- Minus forma/gumb (sakrivena CSS-om) -->
+                            <form action="@Url.Action("OtkaziInstrukciju","Fakultet", new { id = i.Id })"
+                                  method="post"
+                                  class="minus-form">
+                                @Html.AntiForgeryToken()
+                                <button type="button" class="minus-button">−</button>
+                            </form>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+
+        else if (activeTab != "Opce")
+        {
+            <p><i>Ovdje će biti sadržaj za tab: @activeTab</i></p>
+        }
+    </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // klik na plus → sakrij plus-form, prikaži minus-form
+      document.querySelectorAll('.plus-button').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const card      = btn.closest('.instrukcija-card');
+          const plusForm  = card.querySelector('.plus-form');
+          const minusForm = card.querySelector('.minus-form');
+
+          plusForm.style.display  = 'none';
+          minusForm.style.display = 'inline-block';
+        });
+      });
+
+      // klik na minus → sakrij minus-form, prikaži plus-form
+      document.querySelectorAll('.minus-button').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const card      = btn.closest('.instrukcija-card');
+          const plusForm  = card.querySelector('.plus-form');
+          const minusForm = card.querySelector('.minus-form');
+
+          minusForm.style.display = 'none';
+          plusForm.style.display  = 'inline-block';
+        });
+      });
+    });
+</script>
+   
+

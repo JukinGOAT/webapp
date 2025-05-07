@@ -1,0 +1,2040 @@
+﻿/* ===========================
+   GENERAL LAYOUT
+=========================== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'Montserrat',;
+    src: url(/fonts/static/Montserrat-Black.ttf) format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    padding: 10px 10px 0px 10px; /* koristi padding umjesto margine */
+    margin: 0px; /* sprječava overflow */
+    background: #f5f5f5;
+    height: 100%;
+    overflow-y: auto;
+}
+
+
+.layout {
+    display: flex; /* stavlja sidebar, main i rightbar u jedan red */
+    flex-wrap: nowrap; /* ne želite da se prelomi u više redova */
+    height: calc(100vh-60px); /* da vam glavna zona i rightbar budu visine ekrana */
+}
+
+h1, h2, h3 {
+    font-weight: 600;
+}
+
+strong {
+    font-weight: 700;
+}
+
+/* ===========================
+   HEADER
+=========================== */
+.header {
+    font-family: 'Montserrat', sans-serif;
+    width: 100%;
+    background: white;
+    display: flex;
+    align-self: center;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+    border-radius: 20px;
+    height: 60px;
+    box-shadow: 1px 3px rgba(0,0,0,0.08);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    margin-right: auto;
+    cursor: pointer;
+}
+
+    .logo img {
+        height: 32px;
+        margin-right: 10px;
+    }
+
+.title-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 22px;
+    font-weight: bold;
+    color: #4A90E2;
+}
+
+    .title-text .uni {
+        color: gray;
+    }
+
+.top-nav {
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 30px;
+}
+
+.top-nav-button {
+    font-family: 'Montserrat', sans-serif;
+    background: none;
+    border: none;
+    margin: 0 10px;
+    padding: 5px 5px;
+    font-weight: 600;
+    font-size: 14px;
+    color: black;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+    .top-nav-button:hover {
+        background-color: #e6f0ff;
+        border-radius: 5px;
+        color: #007bff;
+    }
+
+.search-container {
+    font-family: 'Montserrat', sans-serif;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+    .search-container input {
+        font-family: 'Montserrat', sans-serif;
+        padding: 5px 10px 5px 30px;
+        border-radius: 20px;
+        border: 1px solid #ccc;
+        box-shadow: 1px 2px  rgba(0,0,0,0.08);
+    }
+
+.search-icon {
+    position: absolute;
+    left: 10px;
+    font-size: 14px;
+    color: #888;
+}
+
+.user-profile {
+    margin-top: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+    
+/* ===========================
+   SIDEBARS
+=========================== */
+.sidebar {
+    margin-top: 5px;
+    background-color: #f5f5f5;
+    width: 70px;
+    padding: 20px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-right: 0px solid #ddd;
+    flex: 0 0 70px;
+    
+}
+
+.rightbar {
+    margin-top: 5px;
+    width: 70px;
+    background-color: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 10px;
+    gap: 10px;
+    
+}
+.user-profile .profile-icon {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: none;
+    background: none;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+    /* 2) make the image fill the circle and crop to fit */
+.header .user-profile .profile-icon > img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+}
+.icon-button {
+    background: white;
+    border: 5px;
+    margin: 10px 0;
+    font-size: 26px;
+    text-size-adjust: auto;
+    cursor: pointer;
+    color: #555;
+    transition: all 0.2s ease-in-out;
+    padding: 10px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+    margin-top: 10px;
+    box-shadow: 1px 3px rgba(0,0,0,0.08);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.profile-icon:hover {
+    
+    transform: scale(1.1);
+}
+    .icon-button:hover {
+        background-color: #e6f0ff;
+        color: #007bff;
+        transform: scale(1.1);
+    }
+
+    .icon-button.active  {
+        background-color: #007bff;
+        color: white;
+    }
+/* Razdjelna crta u sidebaru */
+.sidebar-divider {
+    width: 90%;
+    height: 2px;
+    background-color: #ccc;
+    margin: 10px auto;
+    box-shadow: 2px;
+    border-radius: 33px;
+    box-shadow: 2px 1px 4px rgba(0,0,0,0.4);
+}
+
+/* Spacer koji gura zadnji gumb na dno */
+.sidebar-spacer {
+    margin:70px;
+}
+.pravila-button {
+    font-family: 'Montserrat', sans-serif;
+    
+    border: 0px;
+    
+    font-size: 12px;
+    text-size-adjust: auto;
+    cursor: pointer;
+    color: #555;
+    transition: all 0.2s ease-in-out;
+    
+    
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+.pravila-button:hover {
+    
+    color: black;
+    transform: scale(1.1);
+}
+
+
+/* ===========================
+   MAIN CONTENT & CARDS
+=========================== */
+.main {
+    font-family: 'Montserrat', sans-serif;
+    flex: 1;
+    padding: 0px 10px 10px 15px;
+    
+}
+
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    justify-content: center;
+}
+
+.card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    overflow: hidden;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+    .card img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+
+.card-info {
+    padding: 15px;
+}
+
+    .card-info strong {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .card-info p {
+        font-size: 14px;
+        color: #333;
+    }
+
+    .card-info a {
+        font-size: 13px;
+        color: #0066cc;
+        text-decoration: none;
+    }
+
+    .card-info .date {
+        display: block;
+        margin-top: 10px;
+        font-size: 12px;
+        color: #999;
+    }
+
+.date-title-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.card-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+/* ===========================
+         FRIEND CARDS
+=========================== */
+.section {
+    font-family: 'Montserrat', sans-serif;
+    margin: 40px;
+    background: white;
+    padding: 0.03px 20px 10px 20px;
+    border-radius: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.user-card {
+    width: 160px;
+    height: 200px;
+    border-radius: 12px;
+    padding: 10px 5px 10px 5px;
+    text-align: center;
+    background-color: white;
+    box-shadow: 2px 2px 6px rgba(0.1,0.1,0.1,0.3);
+    
+    transition: transform 0.2s ease-in-out;
+    align-content: center;
+    align-items: center;
+    justify-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+    .user-card:hover {
+        transform: scale(1.05);
+    }
+
+    .user-card img {
+        width: 80%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 10px;
+        margin-bottom: 10px;
+    }
+
+    .user-card div {
+        margin-bottom: 6px;
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    .user-card button {
+        background-color: #ccc;
+        color: black;
+        border: none;
+        padding: 6px 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 13px;
+        transition: background-color 0.2s;
+        box-shadow: 2px 2px 4px rgba(0.9,0.5,1,0.4);
+    }
+
+
+        .user-card button:hover {
+            background-color: #0056b3;
+        }
+
+
+/* Search bar fix */
+.search-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+
+
+/* ===========================
+         PRAVILA
+=========================== */
+.rules-popup {
+    font-family: 'Montserrat', sans-serif;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1001;
+}
+
+    .rules-popup .popup-card {
+        font-family: 'Montserrat', sans-serif;
+        position: relative;
+        background-color: white;
+        padding: 30px 20px;
+        border-radius: 12px;
+        max-width: 600px;
+        width: 90%;
+        max-height: 90vh;
+        overflow-y: auto;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Fix the close button to stay at the top-right of the popup */
+    .rules-popup .close-button {
+        font-family: 'Montserrat', sans-serif;
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: none;
+        border: none;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+        color: #333;
+        z-index: 100;
+        transition: all 0.2s ease-in-out;
+    }
+
+        .rules-popup .close-button:hover {
+            color: red;
+            transform: scale(1.2);
+        }
+
+
+    .rules-popup .popup-box {
+        font-family: 'Montserrat', sans-serif;
+        background-color: #f7f7f7;
+        border-radius: 10px;
+        padding: 15px;
+        margin-top: 15px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+
+    .rules-popup h2 {
+        font-family: 'Montserrat', sans-serif;
+        text-align: center;
+        margin-bottom: 5px;
+    }
+
+    .rules-popup .subtitle {
+        font-family: 'Montserrat', sans-serif;
+        text-align: center;
+        font-size: 14px;
+        color: #666;
+        margin-bottom: 20px;
+    }
+
+    .rules-popup.active {
+        display: flex; /* Kad dodamo klasu active, prikazuj popup */
+    }
+    .semestar{
+        margin-top:-32px;
+    }
+    /*.fakultet-sidebar{
+        display:hidden;
+    }*/
+
+.fakultet-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    background: #d1d1d1;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    font-family: 'Montserrat', sans-serif;
+}
+.tab-divider {
+    border: none;
+    height: 2px;
+    background-color: #878787;
+    margin: 0px 0;
+    align-self: center;
+    width: 180px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+}
+
+.fsidebar-left {
+    font-family: 'Montserrat', sans-serif;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background: white;
+}
+.fsidebar-tabs {
+    font-family: 'Montserrat', sans-serif;
+    margin-left: 120px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px 10px;
+    background: #d1d1d1;
+    border-radius: 20px
+}
+
+.fsidebar-tab {
+    font-family: 'Montserrat', sans-serif;
+    width: 200px;
+    padding: 12px 18px;
+    border-radius: 10px;
+    background: transparent;
+    border: 0px solid #ccc;
+    font-weight: normal;
+    font-size: 14px;
+    text-align: left;
+    cursor: pointer;
+}
+
+    .fsidebar-tab:hover {
+        background-color: #a8a8a8;
+    }
+
+    .fsidebar-tab.active {
+        background-color: #a1a1a1;
+        color: black;
+        font-size:14px;
+        font-weight:bold;
+        text-decoration-thickness:20px;
+        border-color: #007bff;
+    }
+
+
+.fakultet-content {
+    font-family: 'Montserrat', sans-serif;
+    flex: 1;
+    padding: 20px;
+    margin-left: 140px;
+}
+
+.fakultet-images {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+    .fakultet-images img {
+        width: 48%;
+        border-radius: 8px;
+        object-fit: cover;
+    }
+
+.faq details {
+    font-family: 'Montserrat', sans-serif;
+    background: white;
+    padding: 12px 16px;
+    margin: 8px 0;
+    border-radius: 10px;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.08);
+    cursor: pointer;
+}
+.tab-content {
+    font-family: 'Montserrat', sans-serif;
+    display: none;
+}
+
+    .tab-content.active {
+        display: block;
+    }
+.fakultet-container {
+    padding: 20px;
+    max-width: 1000px;
+    margin: auto;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+.image-row {
+    display: flex;
+    gap: 20px;
+    max-width: 100%;
+    overflow: hidden;
+    
+}
+
+    .image-row img {
+        width: 100%;
+        max-width: 400px;
+        border-radius: 12px;
+        object-fit:  fill;
+        height: auto;
+        display: block;
+        flex: 1 1 45%; 
+    }
+
+.fakultet-info {
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 20px;
+    font-size: 15px;
+}
+
+    .fakultet-info a {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+
+
+.fcards {
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.fcard {
+    font-size: 20px;
+    font-weight:500;
+    font-family: 'Montserrat', sans-serif;
+    background: white;
+    padding: 10px 15px;
+    border-color:darkgray;
+    border-radius: 14px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+.fcard:hover {
+    background-color: #a8a8a8;
+}
+
+.fcard.active {
+    background-color: #a1a1a1;
+    color: black;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration-thickness: 20px;
+    border-color: #007bff;
+}
+
+.faq-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.faq-item {
+    border: 1px solid transparent;
+    border-radius: 15px;
+    background: white;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+    /* Hover na cijeli item */
+    .faq-item:hover {
+        border-color: #007bff;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    /* Kada je otvoreno */
+    .faq-item[open] {
+        border-color: #007bff;
+    }
+
+    /* Header unutar FAQ-a */
+    .faq-item summary {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 18px 22px;
+        font-size: 15px;
+        font-weight: 600;
+        background-color: white;
+        border: none;
+        list-style: none;
+        user-select: none;
+        transition: background-color 0.2s;
+    }
+
+        /* Hover na summary posebno */
+        .faq-item summary:hover {
+            background-color: #f0eefc;
+        }
+
+        /* Strelica */
+        .faq-item summary svg {
+            transition: transform 0.3s ease;
+        }
+
+    .faq-item[open] summary svg {
+        transform: rotate(180deg);
+    }
+
+/* Sadržaj unutar otvorenog elementa */
+.faq-content {
+    padding: 16px 22px 20px 22px;
+    font-size: 14px;
+    color: #444;
+    line-height: 1.5;
+}
+.kolegij-divider {
+    margin-top:100px;
+    width: 80%;
+    height: 2px;
+    background-color: #ccc;
+    margin: 10px 0;
+    box-shadow: 2px;
+    width:100%;
+}
+
+.kolegij-detail {
+    padding:10px 20px;
+    background: #d1d1d1;
+    border-radius:20px;
+}
+
+
+
+.profile-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+    .profile-popup.active {
+        display: flex;
+    }
+
+.profile-card {
+    margin: 20px;
+    padding-bottom: 20px;
+    background: white;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 450px;
+    max-height: 95vh;
+    overflow-y: auto;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15); /* umjesto 30px */
+    position: relative;
+    font-family: 'Montserrat', sans-serif;
+}
+    .profile-card h3 {
+        text-align: center;
+        margin-top: 70px; /* bio 60px */
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+.cover-image {
+    height: 140px;
+    background-size: cover;
+    background-position: center;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    
+}
+.cover-image-img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.profile-avatar-popup {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid white;
+    position: absolute;
+    top: 90px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    display:flex;
+}
+
+
+.profile-card .faculty {
+    text-align: center;
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.popup-box {
+    background: #f9f9f9;
+    margin: 15px 20px;
+    padding: 15px;
+    border-radius: 12px;
+}
+
+    .popup-box h4 {
+        margin-bottom: 8px;
+        font-size: 15px;
+        color: #333;
+    }
+
+    .popup-box p {
+        font-size: 14px;
+        color: #555;
+    }
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tag {
+    background: #e0e0e0;
+    border-radius: 20px;
+    padding: 5px 12px;
+    font-size: 13px;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 26px;
+    color: #444;
+    cursor: pointer;
+}
+
+    .close-button:hover {
+        color: red;
+        transform:scale(1.2);
+    }
+.group-section {
+    margin-top:-20px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.group-heading {
+
+    background-color: #e5e5e5;
+    font-size:20px;
+    padding: 10px 15px;
+    border-radius: 10px;
+    font-weight: 600;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+.group-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    
+}
+
+.group-card {
+    width: 110px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    padding: 0px 5px;
+    position: relative;
+    text-align: center;
+    transition: transform 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.group-text {
+margin-top:4px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight:600;
+    
+}
+
+    .group-card:hover {
+        transform: scale(1.05);
+    }
+
+    .group-card img {
+        width: 100px;
+        height: 100px;
+        display:flex;
+        
+        border-radius: 8px;
+        margin-bottom: 8px;
+    }
+
+    .group-card p {
+        font-size: 14px;
+        font-weight: 500;
+        color: #111;
+    }
+
+.group-addable .add-circle {
+    position: absolute;
+    top:-8px;
+    right:0px;
+    background: white;
+    opacity:0.8;
+    
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: #555;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    cursor:pointer;
+}
+.add-circle:hover{
+    background:#ccc;
+}
+.instrukcije-panel {
+    align-content:center;
+    position:center;
+    padding: 1.5rem;
+}
+.new-post {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border-radius: 20px;
+    padding: 30px 40px;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    align-items: center;
+    width: 100%;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+    
+    .new-post button {
+        margin-top: 0.5rem;
+        padding: 0.5rem 1.25rem;
+        background-color: #357ABD;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        font-size: 1rem;
+        cursor: pointer;
+        
+    }
+    .new-post textarea {
+        width: 100%;
+        min-height: 80px;
+        resize: none;
+        border: none;
+        background: #eee;
+        border-radius: 14px;
+        padding: 16px 20px;
+        font-size: 16px;
+        margin-bottom: 20px;
+        font-family: inherit;
+    }
+    .new-post button[type="submit"] {
+        padding: 10px 40px;
+        background-color: #4A90E2;
+        color: white;
+        border: none;
+        border-radius: 12px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.2s;
+    }
+
+        .new-post button[type="submit"]:hover {
+            background-color: #357ABD;
+        }
+
+.instrukcije-panel textarea {
+    width: 100%;
+    height: 60px;
+    position:center;
+    padding:10px;
+
+    font-size: 15px;
+    border-radius: 10px;
+    border: 0px solid #555;
+    background: #ccc; 
+    resize: none;
+    margin-left:50px;
+    margin-right:20px;
+    font-family: inherit;
+    align-self: center;
+}
+
+    .instrukcije-panel button[type="submit"] {
+        background-color: #2980b9;
+        color: white;
+        border: none;
+        padding: 10px 40px 10px 40px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        
+    }
+
+        .instrukcije-panel button[type="submit"]:hover {
+            background-color: #1f6aa5;
+        }
+
+.instrukcije-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    grid-gap: 1.5rem;
+}
+
+.instrukcija-card {
+    position:  relative;
+    align-items:  start;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 1rem 1.25rem 3rem; /* donji padding veći zbog gumba */
+}
+
+    .instrukcija-card strong {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-size: 1.1rem;
+    }
+
+    .instrukcija-card p {
+        line-height: 1.4;
+        font-size: 0.95rem;
+    }
+
+
+
+.plus-form,
+.minus-form {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem; /* umjesto left:50% + transform */
+    left: auto;
+    transform: none;
+}
+
+.minus-form {
+    /* po defaultu ne vidimo minus: */
+    display: none;
+}
+
+.plus-button,
+.minus-button {
+    
+    border: none;
+    background: #ccc;
+    padding:10px 60px 10px 60px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    border-radius: 15px;
+    font-size: 1.25rem;
+    cursor: pointer;
+}
+.plus-button:hover{
+    transform:scale(1.1);
+    background:#555;
+}
+    .minus-button:hover {
+        transform: scale(1.1);
+        background: #555;
+    }
+.instrukcije-panel container {
+    align-content: center;
+    position: center;
+}
+
+
+/* ----- OPĆI KONTEJNER ----- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.forum-panel {
+    padding: 2rem 0;
+}
+
+/* ----- NOVA TEMA ----- */
+.forum-new-post {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1rem;
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+    .forum-new-post textarea {
+        width: 100%;
+        height: 60px;
+        position: center;
+        padding: 10px;
+        font-size: 15px;
+        border-radius: 10px;
+        border: 0px solid #555;
+        background: #ccc;
+        resize: none;
+        margin-left: 50px;
+        margin-right: 20px;
+        font-family: inherit;
+        align-self: center;
+    }
+
+    .forum-new-post button {
+        background: #357ABD;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        padding: 0 1.5rem;
+        font-size: 1rem;
+        cursor: pointer;
+    }
+
+/* ----- GRID POSTOVA ----- */
+.forum-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(300px,1fr));
+}
+
+/* ----- KARTICA ----- */
+.forum-card {
+    position: relative;
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem 3.5rem; /* rezerviraj prostor za dugmiće dole */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.forum-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.75rem;
+}
+
+    .forum-header .tag {
+        margin: 0 0.5rem;
+        color: #777;
+        font-size: 0.9rem;
+    }
+
+    .forum-header .forum-date {
+        color: #999;
+        font-size: 0.85rem;
+    }
+
+.forum-card p {
+    line-height: 1.5;
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+}
+
+/* ----- PLUS / MINUS DUGMIĆI ----- */
+.toggle-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.plus-button,
+.minus-button {
+    width: 120px;
+    padding: 10px 0;
+    font-size: 20px;
+    font-weight: 600;
+    background: #f2f2f2;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+    .plus-button:hover,
+    .minus-button:hover {
+        background-color: #e0e0e0;
+        transform: scale(1.05);
+    }
+
+    .plus-button.active
+     {
+        background: #357ABD;
+        color: #fff;
+    }
+    .minus-button.active {
+        background: #555;
+        color: #fff;
+    }
+    /* ----- KOMENTAR ----- */
+    .comment-form {
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 0.5rem;
+        
+    }
+
+.comment-input {
+    flex: 1;
+    border: 1px solid #ddd;
+    border-radius: 18px;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+    resize: none;
+    height: 2rem;
+    background:#ddd;
+    align-content:center;
+}
+
+.comment-submit {
+    background: #357ABD;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 0 1rem;
+    cursor: pointer;
+    font-size: 1.1rem;
+}
+
+/* ----- LINK ZA PREGLED KOMENTARA ----- */
+.view-comments {
+    display: block;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #555;
+    text-decoration: none;
+    margin-top: 0.25rem;
+}
+
+    .view-comments:hover {
+        text-decoration: underline;
+    }
+/* popup kontejner */
+.notif-popup {
+    position: absolute;
+    top: 60px; /* prilagodi visinu po potrebi */
+    right: 100px; /* koliko udaljeno od desnog ruba */
+    width: 300px;
+    max-height: 400px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    overflow-y: auto;
+    z-index: 1000;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+/* Sakrij po defaultu */
+.hidden {
+    display: none;
+}
+
+.notif-popup h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+/* Lista obavijesti */
+.notif-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+    .notif-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid #eee;
+    }
+
+        .notif-list li:last-child {
+            border-bottom: none;
+        }
+
+/* Avatar */
+.notif-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Tekst */
+.notif-body {
+    flex: 1;
+    font-size: 0.9rem;
+    color: #333;
+    line-height: 1.3;
+}
+
+    .notif-body strong {
+        font-weight: 600;
+    }
+
+    .notif-body em {
+        font-style: normal;
+        color: #357ABD;
+    }
+
+/* Vrijeme */
+.notif-time {
+    display: block;
+    margin-top: 0.25rem;
+    font-size: 0.8rem;
+    color: #777;
+}
+
+/* Učitaj više */
+.notif-loadmore {
+    text-align: center;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+    color: #555;
+    text-decoration: none;
+    border-top: 1px solid #eee;
+}
+
+    .notif-loadmore:hover {
+        text-decoration: underline;
+    }
+em1{
+    cursor:pointer;
+    color:blue;
+}
+    em1:hover {
+        text-decoration: underline;
+    }
+.events-grid {
+    display: grid;
+    gap: 5rem;
+    grid-template-columns: repeat(auto-fit, minmax(350px,300px));
+    padding: 2rem;
+}
+
+.event-card {
+    width: 400px;
+    position: relative;
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    word-spacing: 0.03em;
+    text-align: justify; /* poravnava obje margine */
+    text-justify: inter-word;
+    font-family: 'Montserrat',;
+}
+
+.event-img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.save-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: #eee;
+    border: none;
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    font-size: 1.25rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+    .save-btn:hover {
+        background: #ddd;
+    }
+    .save-btn.saved {
+        background: #357ABD;
+        color: #fff;
+    }
+/* site.css */
+
+.calendar-container {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+    .calendar-container h4 {
+        text-align: center;
+        margin-bottom: 0.5rem;
+        text-transform: uppercase;
+        font-size: 1.1rem;
+    }
+
+.calendar {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+    .calendar th,
+    .calendar td {
+        padding: 0.25rem;
+    }
+
+        .calendar td.highlight {
+            background: #357ABD;
+            color: #fff;
+            border-radius: 50%;
+        }
+
+/* === Globalni container === */
+.chat-container {
+    gap: 10px;
+    display: flex;
+    height: calc(100vh-60px); /* prilagodi visinu prema visini headera */
+    overflow: hidden; /* onemogući scroll cijele stranice unutar ovog view-a */
+}
+
+/* === SIDEBAR === */
+.chat-sidebar {
+    width: 300px;
+    background: white;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    margin-bottom:20px;
+    
+}
+
+    .chat-sidebar header {
+        padding: 16px;
+        
+    }
+
+.contact-card {
+    background: white;
+    border-radius: 16px;
+    margin: 10px 12px;
+    padding: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    transition: background 0.2s;
+}
+
+    .contact-card:hover {
+        background-color: #f0f4ff;
+    }
+
+    .contact-card a {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: #333;
+        gap: 12px;
+        position: relative;
+    }
+
+.contact-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.contact-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.contact-name {
+    font-weight: 600;
+    font-size: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.contact-preview {
+    font-size: 13px;
+    color: #666;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.status-dot {
+    position: absolute;
+    bottom: 8px;
+    left: 40px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+    .status-dot.online {
+        background-color: #4caf50;
+    }
+
+    .status-dot.offline {
+        background-color: #bbb;
+    }
+
+.add-chat-btn {
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    margin: 16px auto;
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+    display:none;
+}
+
+/* === CHAT WINDOW === */
+.chat-window {
+
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 80px);
+    min-height: 0;
+    position: relative;
+    /* ukloni bilo kakav overflow: auto tu, poruke rješavamo niže */
+}
+.chat-body {
+    
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+}
+.chat-header {
+    padding: 16px 24px;
+    margin-top: 20px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+    .chat-header .avatar-lg {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 12px;
+    }
+
+    .chat-header .avatar-wrapper {
+        display: flex;
+        align-items: center;
+    }
+
+    .chat-header h3 {
+        margin: 0;
+        font-size: 1.25rem;
+    }
+
+.messages {
+    flex: 1;
+    overflow-y: auto; /* sad će se skrolati samo poruke */
+    padding: 16px;
+    
+    margin-bottom: 0;
+}
+
+.message-row {
+    display: flex;
+    align-items: center; /* vertikalno poravnanje s dnom */
+    margin: 10px;
+    gap: 10px;
+    max-width: 100%;
+
+}
+
+    .message-row.theirs {
+        justify-content: flex-start;
+        
+    }
+
+    .message-row.mine {
+        justify-content: flex-end;
+        
+    }
+.message-block {
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+}
+.avatar-sm {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.message-bubble {
+    background-color: #cce4ff;
+    padding: 10px 15px;
+    border-radius: 18px;
+    font-size: 0.95rem;
+    max-width: 100%;
+    word-wrap: break-word;
+}
+
+.message-row.theirs .message-bubble {
+    background: #e0e0e0;
+    color: #333;
+    border-bottom-left-radius: 4px;
+}
+
+.message-row.mine .message-bubble {
+    background: #cce4ff;
+    color: #0062cc;
+    border-bottom-right-radius: 4px;
+}
+
+.message-time {
+    font-size: 0.75rem;
+    color: #888;
+    margin-top: 4px;
+    align-self: flex-end;
+    padding-right: 5px;
+}
+.message-row.theirs .message-time {
+    align-self: flex-start;
+    padding-left: 5px;
+}
+
+/* === SEND BAR === */
+.send-form {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    
+    
+    padding: 12px 20px;
+    
+    z-index: 2;
+}
+
+.send-bar {
+    display: flex;
+    align-items: center;
+    background: white;
+    border-radius: 24px;
+    padding: 8px 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.attach-btn {
+    background: transparent;
+    border: none;
+    font-size: 1.2rem;
+    color: #666;
+    cursor: pointer;
+    margin-right: 8px;
+}
+
+.message-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    background: transparent;
+    
+}
+
+.send-btn {
+    background: #0062cc;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 1.2rem;
+    margin-left: 8px;
+    cursor: pointer;
+}
+
+    .send-btn:hover {
+        background-color: #004a99;
+    }
+    .attach-btn:hover {
+        opacity: 0.85;
+    }
+
+/* Kontejner i ikona u headeru */
+.header-chats {
+    position: relative;
+    margin-left: 16px;
+}
+
+.chats-icon {
+    cursor: pointer;
+    font-size: 1.3rem;
+    color: #333;
+}
+
+    .chats-icon:hover {
+        color: #000;
+    }
+
+.chat-popup-area {
+    position: absolute;
+    
+    
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.chat-bubble {
+    
+    border-radius: 50%;
+    overflow: hidden;
+    background: transparent;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition:ease 0.2s;
+}
+.chat-bubble:hover {
+    transform: scale(1.1);
+}
+    .chat-bubble img.avatar-popup {
+        width: 45px;
+        height: 45px;
+        object-fit: cover;
+    }
+
+    .chat-bubble.plus {
+        background-color: #eee;
+        font-size: 24px;
+        font-weight: bold;
+        color: #888;
+    }
+img {
+    object-fit: cover;
+    display: block;
+}
+.comment-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 8px 0;
+}
+
+    .comment-item img.avatar-sm {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+.comment-content {
+    font-size: 14px;
+    line-height: 1.4;
+}
+.comment-block {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin: 12px 0;
+}
+
+    .comment-block img.avatar-sm {
+        width: 50px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    .comment-block .tag {
+        font-size: 13px;
+        color: #777;
+        margin-left: 4px;
+    }
+.toggle-comments-btn {
+    background: none;
+    border: none;
+    color: #666;
+    font-size: 14px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+    .toggle-comments-btn:hover {
+        color: #007bff;
+        text-decoration: underline;
+    }
+.chat-contact {
+    background: white;
+    margin: 10px 12px;
+    padding: 10px 14px;
+    border-radius: 18px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+    transition: background 0.2s ease-in-out;
+    list-style: none;
+}
+
+    .chat-contact.active,
+    .chat-contact:hover {
+        background-color: #e9f0ff;
+    }
+
+    .chat-contact a {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: #222;
+        gap: 12px;
+    }
+
+.chat-contact-avatar {
+    position: relative;
+    flex-shrink: 0;
+}
+
+    .chat-contact-avatar img {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        object-fit: cover;
+        display: block;
+    }
+
+.chat-status {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    width: 12px;
+    height: 12px;
+    border: 2px solid white;
+    border-radius: 50%;
+}
+
+    .chat-status.online {
+        background-color: #28a745;
+    }
+
+    .chat-status.offline {
+        background-color: #ccc;
+    }
+
+.chat-contact-info {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    justify-content: center;
+}
+
+.chat-contact-name {
+    font-weight: 600;
+    font-size: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.chat-contact-preview {
+    font-size: 13px;
+    color: #777;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+/* makni default liste */
+.chat-sidebar .contacts-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* kartica kontakta */
+.chat-sidebar .contact-card {
+    background: #fff;
+    border-radius: 16px;
+    margin: 8px 12px;
+    padding: 10px 14px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    transition: background 0.2s ease-in-out;
+}
+
+    /* hover i aktivno stanje */
+    .chat-sidebar .contact-card:hover,
+    .chat-sidebar .contact-card.active {
+        background-color: #f0f4ff;
+    }
+
+    /* link unutar kartice */
+    .chat-sidebar .contact-card a {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+        color: #222;
+    }
+
+/* avatar veći i centriran */
+.chat-contact-avatar img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* status dot */
+.chat-status {
+    position: absolute;
+    bottom: 6px;
+    right: 6px;
+    width: 12px;
+    height: 12px;
+    border: 2px solid white;
+    border-radius: 50%;
+}
+
+    .chat-status.online {
+        background-color: #4caf50;
+    }
+
+    .chat-status.offline {
+        background-color: #bbb;
+    }
+
+/* ime i preview */
+.chat-contact-info {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.chat-contact-name {
+    font-weight: 600;
+    font-size: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.chat-contact-preview {
+    font-size: 13px;
+    color: #666;
+    margin-top: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* show “+” dugme za novu konverzaciju */
+.add-chat-btn {
+    display: block;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    margin: 16px auto;
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+    .add-chat-btn:hover {
+        background-color: #e6f0ff;
+    }
+.sidebar-icon {
+    width: 37px; /* po želji: 24px, 32px… */
+    height: 36px;
+    object-fit: cover;
+}

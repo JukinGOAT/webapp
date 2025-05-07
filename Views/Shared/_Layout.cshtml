@@ -1,0 +1,335 @@
+﻿@model dynamic
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Antiforgery
+
+@{
+    var openProfile = ViewBag.OpenProfilePopup != null && (bool)ViewBag.OpenProfilePopup;
+    var profile = (Model as webapp.ViewModels.HomePageViewModel)?.Profile
+        ?? (Model as webapp.ViewModels.FriendsPageViewModel)?.Profile
+        ?? (Model as webapp.ViewModels.FakultetViewModel)?.Profile
+        ?? (Model as webapp.ViewModels.ForumViewModel)?.Profile
+        ?? (Model as webapp.ViewModels.ChatroomViewModel)?.Profile;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewData["Title"] – UniConnect</title>
+
+    <!-- Font Awesome 6 Free (no integrity check, so it can’t get blocked) -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+          crossorigin="anonymous" />
+
+    <!-- Google Fonts: Montserrat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+          rel="stylesheet" />
+
+    <!-- Your site’s main CSS -->
+    <link rel="stylesheet" href="~/css/Program.css" />
+    <!-- Chat‐specific styles -->
+    <link rel="stylesheet" href="~/css/chat.css" />
+</head>
+<body>
+    <input type="hidden" id="antiForgeryToken" name="__RequestVerificationToken" value="@(Antiforgery.GetAndStoreTokens(Context).RequestToken)" />
+
+    <!-- PROFILE POPUP -->
+   
+    <div id="rulesPopup" class="rules-popup">
+        <div class="popup-card">
+            <button class="close-button" onclick="closeTermsPopup()">×</button>
+            <h2 class="title">Pravila korištenja</h2>
+            <p class="subtitle">Dobrodošli u UniConnect!</p>
+
+            <div class="popup-box">
+                <h4>Privremeni sadržaj</h4>
+                <p>Svi sadržaji koji nisu tekstualnog oblika (fotografije, videozapisi, audio zapisi) nestat će nakon 24 sata ako su poslani ili objavljeni na Forumu ili u Chatroom-u.</p>
+                <p>Ako želite dijeliti takve sadržaje na dulji period, možete ih razmjenjivati unutar privatnih razgovora izvan UniConnect mreže.</p>
+            </div>
+
+            <div class="popup-box">
+                <h4>Odgovornost korisnika</h4>
+                <p>Svaka objava biti će povezana s imenom i prezimenom koji ju je objavio. <strong>Korisnik snosi odgovornost za sadržaj koji objavljuje</strong> – diskriminirajući ili neprimjereni sadržaj nisu dopušteni.</p>
+            </div>
+
+            <div class="popup-box">
+                <h4>Pristojnost i moderacija</h4>
+                <p>Molimo vas da budete pristojni i poštujete druge korisnike. Ako primijetite neprikladan sadržaj ili ponašanje, možete se obratiti <a href="#">UniConnect administraciji</a>, koja može ukloniti sadržaj ili blokirati korisnika.</p>
+            </div>
+
+            <div class="popup-box">
+                <h4>Godišnja prijava</h4>
+                <p>Korisnici se moraju svake godine ponovno prijavljivati kako bi se potvrdilo da još uvijek imaju studentska prava. Kada studentu AAI@EduHr e-mail adresa istekne, pristup aplikaciji više neće biti moguć.</p>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- HEADER -->
+    <div class="header">
+        <div class="logo" onclick="location.href='@Url.Action("Index", "Home")'">
+            
+            <span class="title-text"><span class="uni">Uni</span>Connect</span>
+        </div>
+
+        <nav class="top-nav">
+            <button onclick="location.href='@Url.Action("Saved","Home")'" class="top-nav-button">
+                Spremljeno
+            </button>
+            <button onclick="location.href='@Url.Action("Index", "Friends")'" class="top-nav-button">Prijatelji</button>
+
+            <button id="notif-btn" type="button" class="top-nav-button">
+                Obavijesti
+            </button>
+
+            <div class="search-container">
+                <input type="text" placeholder="Pretraži" />
+                <span class="search-icon">🔍</span>
+            </div>
+        </nav>
+
+        <div class="user-profile">
+            <form method="post" action="/Profile/OtvoriProfil">
+                <button type="submit" class="profile-icon">
+                    <img src="@Url.Content("~/images/" + (profile?.ProfileImageUrl ?? "default.png"))"
+                         alt="Profil" />
+                </button>
+            </form>
+
+           
+
+            <div id="profilePopup" class="profile-popup @(openProfile ? "active" : "")">
+
+                <div class="profile-card">
+                    <button class="close-button" onclick="closeProfilePopup()">×</button>
+
+                    <img class="cover-image-img" src="@Url.Content("~/images/" + profile?.CoverImageUrl)">
+                    <img src="@Url.Content("~/images/" + profile?.ProfileImageUrl)" class="profile-avatar-popup" alt="Profil" />
+
+
+                    <h3>@profile?.FullName</h3>
+                    <p class="faculty">@profile?.Faculty @("#" + (profile?.Tag?.Split(',')?.FirstOrDefault()?.Trim() ?? ""))</p>
+
+
+                    <div class="popup-box">
+                        <h4>O meni</h4>
+                        <p>@profile?.About</p>
+                    </div>
+
+                    <div class="popup-box">
+                        <h4>Obavijesti vezane uz #</h4>
+                        <div class="tags">
+                            @foreach (var tag in (profile?.Tags?.Split(',') ?? new string[0]))
+                            {
+                                <span class="tag">#@tag.Trim()</span>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- LAYOUT WRAPPER -->
+    <div class="layout">
+        <div class="sidebar">
+            <button onclick="location.href='@Url.Action("Index", "Fakultet")'" class="icon-button"><img class="sidebar-icon" alt="Fakultet" src="@Url.Content("~/images/images.png")" /></button>
+
+            <button onclick="location.href='@Url.Action("Index", "Forum")'" class="icon-button">👥</button>
+
+
+
+            <button onclick="location.href='@Url.Action("Index", "Messages")'" class="icon-button">💬</button>
+
+            <div class="sidebar-divider"></div>
+
+            <button class="icon-button">➕</button>
+
+            <div class="sidebar-spacer"></div> <!-- Gura gumb dolje -->
+
+            <button class="pravila-button" type="button" onclick="openTermsPopup()">Pravila Korištenja</button>
+        </div>
+
+
+        <div class="main">
+            @RenderBody()
+        </div>
+
+        <div class="rightbar">
+            <div class="chat-popup-area">
+                @if (ViewBag.ActiveChats != null)
+                {
+                    @foreach (webapp.Models.Profile user in (IEnumerable<webapp.Models.Profile>)ViewBag.ActiveChats)
+
+                    {
+                        <div class="chat-bubble">
+                            <a href="@Url.Action("Index", "Messages", new { chatWithId = user.Id })">
+                                <img src="~/images/@user.ProfileImageUrl" class="avatar-popup" />
+                            </a>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+
+        </div>
+    </div>
+    <!-- Notifications popup: -->
+    <div id="notif-popup" class="notif-popup hidden">
+        <h3>Obavijesti</h3>
+        <ul class="notif-list">
+            <li>
+                <img src="~/images/jana.jpg" alt="Jana Lončar" class="notif-avatar" />
+                <div class="notif-body">
+                    <strong>Jana Lončar</strong> odgovara na tvoj komentar u grupi<em1 onclick="location.href='@Url.Action("Index", "Forum")'" > Forum</em1>
+                    
+                    <span class="notif-time">Prije 6 h</span>
+                </div>
+            </li>
+            <li>
+                <img src="~/images/ivan.jpg" alt="Ivan Mulan" class="notif-avatar" />
+                <div class="notif-body">
+                    <strong>Ivan Mulan</strong> ti šalje zahtjev za prijateljstvo.
+                    <span class="notif-time">Prije 8 h</span>
+                </div>
+            </li>
+            <!-- Ana Janić – reakcija u Instrukcije kanalu -->
+            <li>
+                <img src="~/images/ana.jpg" alt="Ana Janić" class="notif-avatar" />
+                <div class="notif-body">
+                    <strong>Ana Janić</strong> reagira na tvoju objavu u kanalu <em1 onclick="location.href='@Url.Action("Index","Fakultet", new { tab = "Instrukcije" })'">#Instrukcije</em1>.
+                    <span class="notif-time">Prije 8 h</span>
+                </div>
+            </li>
+
+            <!-- ponovo Jana Lončar -->
+            <li>
+                <img src="~/images/jana.jpg" alt="Jana Lončar" class="notif-avatar" />
+                <div class="notif-body">
+                    <strong>Jana Lončar</strong> odgovara na tvoj komentar u grupi <em1 onclick="location.href='@Url.Action("Index", "Forum")'">Forum</em1>.
+                    <span class="notif-time">Prije 10 h</span>
+                </div>
+            </li>
+
+            <!-- Nikolina Vrčić – prijateljski zahtjev -->
+            <li>
+                <img src="~/images/nina.jpg" alt="Nikolina Vrčić" class="notif-avatar" />
+                <div class="notif-body">
+                    <strong>Nikolina Vrčić</strong> ti šalje zahtjev za prijateljstvo.
+                    <span class="notif-time">Prije 11 h</span>
+                </div>
+            </li>
+        </ul>
+        <a href="#" class="notif-loadmore">Učitaj više obavijesti</a>
+    </div>
+   
+    <script>
+        const toggle = document.getElementById("chatsToggle");
+        const popup  = document.getElementById("recentChatsPopup");
+
+        toggle.addEventListener("click", e => {
+          e.stopPropagation();
+          popup.classList.toggle("hidden");
+        });
+
+        // klik izvan popupa ga zatvara
+        document.addEventListener("click", e => {
+          if (!popup.contains(e.target) && !toggle.contains(e.target)) {
+            popup.classList.add("hidden");
+          }
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+          const btn   = document.getElementById('notif-btn');
+          const popup = document.getElementById('notif-popup');
+
+          btn.addEventListener('click', e => {
+            popup.classList.toggle('hidden');
+          });
+
+          // opcionalno: zatvori popup klikom izvan
+          document.addEventListener('click', e => {
+            if (!popup.contains(e.target) && e.target !== btn) {
+              popup.classList.add('hidden');
+            }
+          });
+        });
+    </script>
+
+
+    <script>
+        function openProfilePopup() {
+            document.getElementById("profilePopup")?.classList.add("active");
+        }
+
+        function closeProfilePopup() {
+            document.getElementById("profilePopup")?.classList.remove("active");
+        }
+    </script>
+            <script>
+        function openTermsPopup() {
+            var popup = document.getElementById("rulesPopup");
+            if (popup) {
+                popup.classList.add('active'); // Dodajemo klasu
+            }
+        }
+
+        function closeTermsPopup() {
+            var popup = document.getElementById("rulesPopup");
+            if (popup) {
+                popup.classList.remove('active'); // Brišemo klasu
+            }
+        }
+    
+
+    </script>
+    @RenderSection("Scripts", required: false)
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+          document.querySelectorAll(".toggle-save-form").forEach(form => {
+            form.addEventListener("submit", async evt => {
+              evt.preventDefault();
+
+              const btn   = form.querySelector(".save-btn");
+              const id    = form.querySelector("input[name=id]").value;
+              const token = form.querySelector("input[name=__RequestVerificationToken]").value;
+              const action = form.action;
+
+              const payload = new URLSearchParams();
+              payload.set("__RequestVerificationToken", token);
+              payload.set("id", id);
+
+              const res = await fetch(action, {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: payload.toString()
+              });
+
+              if (!res.ok) {
+                console.error("ToggleSave failed", res.status, res.statusText);
+                return;
+              }
+
+              // Flip the button's saved state:
+              const isNowSaved = btn.classList.toggle("saved");
+              btn.textContent = isNowSaved ? "−" : "+";
+
+              // **If we're on the Saved page and we've just unsaved, remove the card altogether**
+              if (!isNowSaved && window.location.pathname.toLowerCase().includes("/home/saved")) {
+                const card = form.closest(".event-card");
+                if (card) card.remove();
+              }
+            });
+          });
+        });
+    </script>
+</body>
+</html>

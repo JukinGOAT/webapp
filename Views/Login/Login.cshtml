@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "Login";
+}
+
+<h2>Prijava</h2>
+
+@if (ViewBag.Error != null)
+{
+    <div style="color:red">@ViewBag.Error</div>
+}
+
+<form method="post">
+    <label for="userId">Unesi svoj ID (npr. 1, 2, 3...):</label>
+    <input type="number" name="userId" required />
+    <button type="submit">Prijavi se</button>
+</form>

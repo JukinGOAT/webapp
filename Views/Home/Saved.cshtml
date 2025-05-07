@@ -1,0 +1,29 @@
+﻿@model webapp.ViewModels.HomePageViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Saved";
+}
+<div class="events-grid">
+    @foreach (var e in Model.Events)
+    {
+        <div class="event-card">
+            <img src="@e.ImageUrl" alt="@e.Title" class="event-img" />
+            <p><strong>Datum događaja:</strong> @e.DateRange</p>
+            <h3>@e.Title</h3>
+            <p>@e.Description</p>
+            <a href="@e.Link" target="_blank" class="event-link">@e.LinkText</a>
+            <p class="event-date">@e.FullDate</p>
+
+            <form class="toggle-save-form"
+                  action="@Url.Action("ToggleSave","Home")"
+                  method="post">
+                @Html.AntiForgeryToken()
+                <input type="hidden" name="id" value="@e.Id" />
+                <button type="submit"
+                        class="save-btn @(e.IsSaved ? "saved": "")">
+                    @(e.IsSaved ? "−" : "+")
+                </button>
+            </form>
+        </div>
+    }
+</div>

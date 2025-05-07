@@ -1,0 +1,92 @@
+﻿@model webapp.ViewModels.ChatroomViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Chatroom";
+}
+
+<link rel="stylesheet" href="~/css/chat.css" />
+
+<div class="chat-container">
+    <!-- Sidebar -->
+    <aside class="chat-sidebar">
+        <header>
+            <h2>Chatroom</h2>
+        </header>
+        <ul class="contacts-list">
+            @foreach (var c in Model.Contacts)
+            {
+                <div class="sidebar-divider"></div>
+                var isActive = (Model.ActiveChatUserId == c.Id);
+                <li class="chat-contact contact-card @(isActive ? "active" : "")">
+                    <a href="@Url.Action("Index", "Messages", new { chatWithId = c.Id })">
+                        <div class="chat-contact-avatar">
+                            <img src="@Url.Content($"~/images/{c.ProfileImageUrl}")"
+                                 alt="@c.FullName"
+                                 class="contact-avatar" />
+                            <span class="chat-status @(c.IsOnline ? "online" : "offline")"></span>
+                        </div>
+                        <div class="chat-contact-info">
+                            <div class="chat-contact-name">@c.FullName</div>
+                            <div class="chat-contact-preview">
+                                @("...") <!-- kasnije možeš ubaciti pravi preview -->
+                            </div>
+                        </div>
+                    </a>
+                </li>
+            }
+        </ul>
+
+        
+    </aside>
+
+
+    <!-- Chat window -->
+    <section class="chat-window">
+        @if (Model.ActiveChatUserId != null && Model.Contacts.Any(c => c.Id == Model.ActiveChatUserId))
+        {
+            var peer = Model.Contacts.First(c => c.Id == Model.ActiveChatUserId);
+            <header class="chat-header">
+                <div class="avatar-wrapper">
+                    <img src="@Url.Content($"~/images/{peer.ProfileImageUrl}")"
+                         alt="@peer.FullName"
+                         class="avatar-lg" />
+                    <h3>@peer.FullName</h3>
+                </div>
+            </header>
+
+            <div class="chat-body">
+                <div class="messages">
+                    @foreach (var m in Model.History)
+                    {
+                        var mine = (m.SenderId == Model.Me.Id);
+                        <div class="message-row @(mine ? "mine" : "theirs")">
+                            @if (!mine)
+                            {
+                                <img src="@Url.Content($"~/images/{peer.ProfileImageUrl}")" alt="" class="avatar-sm" />
+                            }
+                            <div class="message-block">
+                                <div class="message-bubble">@m.Body</div>
+                                <div class="message-time">@m.SentAt.ToLocalTime().ToString("HH:mm")</div>
+                            </div>
+                            @if (mine)
+                            {
+                                <img src="@Url.Content($"~/images/{Model.Me.ProfileImageUrl}")" alt="" class="avatar-sm" />
+                            }
+                        </div>
+                    }
+                </div>
+
+                <form class="send-form" method="post" action="@Url.Action("Send","Messages")">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="toUserId" value="@Model.ActiveChatUserId" />
+                    <div class="send-bar">
+                        <button type="button" class="attach-btn"><i class="fas fa-paperclip"></i></button>
+                        <input type="text" name="body" class="message-input" placeholder="Pošalji poruku" autocomplete="off" />
+                        <button type="submit" class="send-btn"><i class="fas fa-paper-plane"></i></button>
+                    </div>
+                </form>
+            </div>
+        }
+    </section>
+
+</div>

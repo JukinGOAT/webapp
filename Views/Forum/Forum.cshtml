@@ -1,0 +1,110 @@
+﻿@model webapp.ViewModels.ForumViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Forum";
+}
+
+<link rel="stylesheet" href="~/css/site.css" />
+
+<div class="forum-panel container">
+    <form action="@Url.Action("Create", "Forum")" method="post" class="new-post">
+        @Html.AntiForgeryToken()
+        <textarea name="newContent" placeholder="Napiši novu objavu"></textarea>
+        <button type="submit">Objavi</button>
+    </form>
+
+    <div class="forum-grid">
+        @foreach (var p in Model.Posts)
+        {
+            <div class="forum-card">
+                <div class="forum-header">
+                    <strong>@p.Autor</strong>
+                    
+                </div>
+                <p>@p.Sadrzaj</p>
+
+                <div class="toggle-buttons">
+                    <button type="button" class="minus-button">−</button>
+                    <button type="button" class="plus-button">+</button>
+                </div>
+
+                <form action="@Url.Action("AddComment", "Forum")" method="post" class="comment-form">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="postId" value="@p.Id" />
+                    <textarea name="content" class="comment-input" placeholder="Napiši komentar"></textarea>
+                    <button type="submit" class="comment-submit">⮞</button>
+                </form>
+
+                <!-- OVDJE inline komentari, po defaultu sakriveni -->
+                <div class="comments-list" style="display:none;">
+                    @if (p.Comments.Count == 0)
+                    {
+                        <p class="no-comments">Nema komentara.</p>
+                    }
+                    else
+                    {
+                        @foreach (var comment in p.Comments)
+                        {
+                            <div class="comment-item" style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+                                <img src="~/images/@comment.Profile.ProfileImageUrl" alt="avatar" class="avatar-sm" style="width: 45px; height: 45px; border-radius: 50%; object-fit: cover;" />
+
+                                <div style="display: flex; flex-direction: column;">
+                                    <div style="font-weight: bold;">
+                                        @comment.Author
+                                        <span style="color: gray; font-size: 0.9rem;">#@comment.Profile.Tag</span>
+                                    </div>
+                                    <div>@comment.Content</div>
+
+                                </div>
+
+                            </div>
+                            <div class="sidebar-divider" width="100%"></div>
+                        }
+
+                    }
+                </div>
+
+                <a href="#" class="view-comments">Pogledaj komentare (@p.Comments.Count)</a>
+            </div>
+        }
+    </div>
+</div>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // za svaki link "view-comments" toggleaj prikaz .comments-list u istoj kartici
+      document.querySelectorAll('.view-comments').forEach(link => {
+        link.addEventListener('click', e => {
+          e.preventDefault();
+          const card = link.closest('.forum-card');
+          const coms = card.querySelector('.comments-list');
+          const showing = window.getComputedStyle(coms).display !== 'none';
+          coms.style.display = showing ? 'none' : 'block';
+          link.textContent = showing
+            ? `Pogledaj komentare (${card.querySelectorAll('.comment-item').length})`
+            : `Sakrij komentare (${card.querySelectorAll('.comment-item').length})`;
+        });
+      });
+    });
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.forum-card').forEach(card => {
+        const plus  = card.querySelector('.plus-button');
+        const minus = card.querySelector('.minus-button');
+
+        // Minus i plus ne mogu biti aktivni istovremeno
+        plus.addEventListener('click', () => {
+          minus.classList.remove('active');
+          plus.classList.toggle('active');
+        });
+        minus.addEventListener('click', () => {
+          plus.classList.remove('active');
+          minus.classList.toggle('active');
+        });
+      });
+    });
+</script>
+
+

@@ -1,0 +1,43 @@
+﻿@model webapp.ViewModels.FriendsPageViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";  
+}
+
+
+<div class="section">
+    <h2>Tvoji prijatelji</h2>
+    <div class="card-container">
+        @foreach (var friend in Model.Friends)
+        {
+            <div class="user-card">
+                <img src="@Url.Content("~/images/" + (friend.ProfileImageUrl))" alt="Profile" />
+                <div>@friend.FullName</div>
+                <div>@friend.Faculty</div>
+                <form method="get" asp-controller="Messages" action="/Messages" asp-action="Index">
+                    <input type="hidden" name="chatWithId" value="@friend.Id" />
+                    <button type="submit">Pošalji poruku</button>
+                </form>
+            </div>
+        }
+    </div>
+</div>
+
+<div class="section">
+    <h2>Osobe koje možda poznaješ</h2>
+    <div class="card-container">
+        @foreach (var user in Model.RecommendedUsers)
+        {
+            <div class="user-card">
+                <img src="@Url.Content("~/images/" + (user.ProfileImageUrl))" alt="Profile" />
+                <div>@user.FullName</div>
+                <div>@user.Faculty</div>
+                <form action="@Url.Action("FollowUser", "Friends")" method="post" value="@user.Id">
+                    <input type="hidden" name="id" value="@user.Id" />
+                    @Html.AntiForgeryToken()
+                    <button type="submit">Dodaj kolegu</button>
+                </form>
+            </div>
+        }
+    </div>
+</div>
+
