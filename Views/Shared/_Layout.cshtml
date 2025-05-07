@@ -16,28 +16,19 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>@ViewData["Title"] – UniConnect</title>
-
-    <!-- Font Awesome 6 Free (no integrity check, so it can’t get blocked) -->
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
           crossorigin="anonymous" />
-
-    <!-- Google Fonts: Montserrat -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
           rel="stylesheet" />
-
-    <!-- Your site’s main CSS -->
     <link rel="stylesheet" href="~/css/Program.css" />
-    <!-- Chat‐specific styles -->
     <link rel="stylesheet" href="~/css/chat.css" />
 </head>
 <body>
     <input type="hidden" id="antiForgeryToken" name="__RequestVerificationToken" value="@(Antiforgery.GetAndStoreTokens(Context).RequestToken)" />
 
-    <!-- PROFILE POPUP -->
-   
     <div id="rulesPopup" class="rules-popup">
         <div class="popup-card">
             <button class="close-button" onclick="closeTermsPopup()">×</button>
@@ -67,8 +58,6 @@
         </div>
     </div>
 
-
-    <!-- HEADER -->
     <div class="header">
         <div class="logo" onclick="location.href='@Url.Action("Index", "Home")'">
             
@@ -136,8 +125,6 @@
 
     </div>
 
-
-    <!-- LAYOUT WRAPPER -->
     <div class="layout">
         <div class="sidebar">
             <button onclick="location.href='@Url.Action("Index", "Fakultet")'" class="icon-button"><img class="sidebar-icon" alt="Fakultet" src="@Url.Content("~/images/images.png")" /></button>
@@ -152,7 +139,7 @@
 
             <button class="icon-button">➕</button>
 
-            <div class="sidebar-spacer"></div> <!-- Gura gumb dolje -->
+            <div class="sidebar-spacer"></div> 
 
             <button class="pravila-button" type="button" onclick="openTermsPopup()">Pravila Korištenja</button>
         </div>
@@ -179,9 +166,9 @@
             </div>
         </div>
 
-        </div>
     </div>
-    <!-- Notifications popup: -->
+    
+    
     <div id="notif-popup" class="notif-popup hidden">
         <h3>Obavijesti</h3>
         <ul class="notif-list">
@@ -200,7 +187,7 @@
                     <span class="notif-time">Prije 8 h</span>
                 </div>
             </li>
-            <!-- Ana Janić – reakcija u Instrukcije kanalu -->
+            
             <li>
                 <img src="~/images/ana.jpg" alt="Ana Janić" class="notif-avatar" />
                 <div class="notif-body">
@@ -209,7 +196,7 @@
                 </div>
             </li>
 
-            <!-- ponovo Jana Lončar -->
+            
             <li>
                 <img src="~/images/jana.jpg" alt="Jana Lončar" class="notif-avatar" />
                 <div class="notif-body">
@@ -218,7 +205,7 @@
                 </div>
             </li>
 
-            <!-- Nikolina Vrčić – prijateljski zahtjev -->
+           
             <li>
                 <img src="~/images/nina.jpg" alt="Nikolina Vrčić" class="notif-avatar" />
                 <div class="notif-body">
@@ -239,7 +226,6 @@
           popup.classList.toggle("hidden");
         });
 
-        // klik izvan popupa ga zatvara
         document.addEventListener("click", e => {
           if (!popup.contains(e.target) && !toggle.contains(e.target)) {
             popup.classList.add("hidden");
@@ -255,7 +241,6 @@
             popup.classList.toggle('hidden');
           });
 
-          // opcionalno: zatvori popup klikom izvan
           document.addEventListener('click', e => {
             if (!popup.contains(e.target) && e.target !== btn) {
               popup.classList.add('hidden');
@@ -278,14 +263,14 @@
         function openTermsPopup() {
             var popup = document.getElementById("rulesPopup");
             if (popup) {
-                popup.classList.add('active'); // Dodajemo klasu
+                popup.classList.add('active'); 
             }
         }
 
         function closeTermsPopup() {
             var popup = document.getElementById("rulesPopup");
             if (popup) {
-                popup.classList.remove('active'); // Brišemo klasu
+                popup.classList.remove('active'); 
             }
         }
     
@@ -318,11 +303,9 @@
                 return;
               }
 
-              // Flip the button's saved state:
               const isNowSaved = btn.classList.toggle("saved");
               btn.textContent = isNowSaved ? "−" : "+";
 
-              // **If we're on the Saved page and we've just unsaved, remove the card altogether**
               if (!isNowSaved && window.location.pathname.toLowerCase().includes("/home/saved")) {
                 const card = form.closest(".event-card");
                 if (card) card.remove();

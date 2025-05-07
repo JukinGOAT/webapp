@@ -7,18 +7,12 @@ namespace webapp.Models
     {
         [Key]
         public int Id { get; set; }
-
-        // FK back to your UserProfiles table:
         public int SenderId { get; set; }
         public Profile Sender { get; set; } = null!;
-
         public int ReceiverId { get; set; }
         public Profile Receiver { get; set; } = null!;
-
         [Required]
         public string Body { get; set; } = null!;
-
-
         public DateTime SentAt { get; set; }
         
     }

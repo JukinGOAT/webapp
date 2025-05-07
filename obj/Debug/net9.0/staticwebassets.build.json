@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "BNof0O3YitNzxbDgvCNdgyMtslgEHUCGpeIyOUmK7CQ=",
+  "Hash": "JEuk5n7lAcWxM0bEXIYPg2no2/BnpgZ/DIZZNNIG8WA=",
   "Source": "webapp",
   "BasePath": "_content/webapp",
   "Mode": "Default",
@@ -59,12 +59,12 @@
       "OriginalItemSpec": "D:\\Lumen\\webapp\\wwwroot\\css\\Fonts\\OFL.txt"
     },
     {
-      "Identity": "D:\\Lumen\\webapp\\obj\\Debug\\net9.0\\compressed\\wzmkoge2y0-rxyivmu010.gz",
+      "Identity": "D:\\Lumen\\webapp\\obj\\Debug\\net9.0\\compressed\\wzmkoge2y0-d8jcketxsm.gz",
       "SourceId": "webapp",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Lumen\\webapp\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "_content/webapp",
-      "RelativePath": "css/Program#[.{fingerprint=rxyivmu010}]?.css.gz",
+      "RelativePath": "css/Program#[.{fingerprint=d8jcketxsm}]?.css.gz",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -73,8 +73,8 @@
       "RelatedAsset": "D:\\Lumen\\webapp\\wwwroot\\css\\Program.css",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "p8trl913iy",
-      "Integrity": "N2r+ham8GQ7fCs/DrW4H5ikk4/XX1kQ8bRZIQmwRruw=",
+      "Fingerprint": "n9z3zys4gs",
+      "Integrity": "S2A84YCxLWYAHaViqciOqlQZBtc5JCIFGoQ/vTQdSeQ=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "D:\\Lumen\\webapp\\wwwroot\\css\\Program.css"
@@ -577,8 +577,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "rxyivmu010",
-      "Integrity": "oQdZ8ql1OMD/qJC0oBGRt41XpYIxScQC7YTBu6vipMs=",
+      "Fingerprint": "d8jcketxsm",
+      "Integrity": "o3eSt1img1Odb69cIMhq7x9WTCx0u41wNNsL0oyM4Wg=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\Program.css"
@@ -3493,7 +3493,7 @@
     },
     {
       "Route": "css/Program.css",
-      "AssetFile": "D:\\Lumen\\webapp\\obj\\Debug\\net9.0\\compressed\\wzmkoge2y0-rxyivmu010.gz",
+      "AssetFile": "D:\\Lumen\\webapp\\obj\\Debug\\net9.0\\compressed\\wzmkoge2y0-d8jcketxsm.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
@@ -3512,11 +3512,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"N2r+ham8GQ7fCs/DrW4H5ikk4/XX1kQ8bRZIQmwRruw=\""
+          "Value": "\"S2A84YCxLWYAHaViqciOqlQZBtc5JCIFGoQ/vTQdSeQ=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 03:13:24 GMT"
+          "Value": "Wed, 07 May 2025 19:26:32 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3536,13 +3536,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"oQdZ8ql1OMD/qJC0oBGRt41XpYIxScQC7YTBu6vipMs=\""
+          "Value": "W/\"o3eSt1img1Odb69cIMhq7x9WTCx0u41wNNsL0oyM4Wg=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-oQdZ8ql1OMD/qJC0oBGRt41XpYIxScQC7YTBu6vipMs="
+          "Value": "sha256-o3eSt1img1Odb69cIMhq7x9WTCx0u41wNNsL0oyM4Wg="
         }
       ]
     },
@@ -3557,7 +3557,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "40958"
+          "Value": "41004"
         },
         {
           "Name": "Content-Type",
@@ -3565,11 +3565,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"oQdZ8ql1OMD/qJC0oBGRt41XpYIxScQC7YTBu6vipMs=\""
+          "Value": "\"o3eSt1img1Odb69cIMhq7x9WTCx0u41wNNsL0oyM4Wg=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 03:13:24 GMT"
+          "Value": "Wed, 07 May 2025 19:26:32 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3579,13 +3579,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-oQdZ8ql1OMD/qJC0oBGRt41XpYIxScQC7YTBu6vipMs="
+          "Value": "sha256-o3eSt1img1Odb69cIMhq7x9WTCx0u41wNNsL0oyM4Wg="
         }
       ]
     },
     {
       "Route": "css/Program.css.gz",
-      "AssetFile": "D:\\Lumen\\webapp\\obj\\Debug\\net9.0\\compressed\\wzmkoge2y0-rxyivmu010.gz",
+      "AssetFile": "D:\\Lumen\\webapp\\obj\\Debug\\net9.0\\compressed\\wzmkoge2y0-d8jcketxsm.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3602,11 +3602,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"N2r+ham8GQ7fCs/DrW4H5ikk4/XX1kQ8bRZIQmwRruw=\""
+          "Value": "\"S2A84YCxLWYAHaViqciOqlQZBtc5JCIFGoQ/vTQdSeQ=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 03:13:24 GMT"
+          "Value": "Wed, 07 May 2025 19:26:32 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3624,13 +3624,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-N2r+ham8GQ7fCs/DrW4H5ikk4/XX1kQ8bRZIQmwRruw="
+          "Value": "sha256-S2A84YCxLWYAHaViqciOqlQZBtc5JCIFGoQ/vTQdSeQ="
         }
       ]
     },
     {
-      "Route": "css/Program.rxyivmu010.css",
-      "AssetFile": "D:\\Lumen\\webapp\\obj\\Debug\\net9.0\\compressed\\wzmkoge2y0-rxyivmu010.gz",
+      "Route": "css/Program.d8jcketxsm.css",
+      "AssetFile": "D:\\Lumen\\webapp\\obj\\Debug\\net9.0\\compressed\\wzmkoge2y0-d8jcketxsm.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
@@ -3649,11 +3649,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"N2r+ham8GQ7fCs/DrW4H5ikk4/XX1kQ8bRZIQmwRruw=\""
+          "Value": "\"S2A84YCxLWYAHaViqciOqlQZBtc5JCIFGoQ/vTQdSeQ=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 03:13:24 GMT"
+          "Value": "Wed, 07 May 2025 19:26:32 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3673,13 +3673,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"oQdZ8ql1OMD/qJC0oBGRt41XpYIxScQC7YTBu6vipMs=\""
+          "Value": "W/\"o3eSt1img1Odb69cIMhq7x9WTCx0u41wNNsL0oyM4Wg=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "rxyivmu010"
+          "Value": "d8jcketxsm"
         },
         {
           "Name": "label",
@@ -3687,12 +3687,12 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-oQdZ8ql1OMD/qJC0oBGRt41XpYIxScQC7YTBu6vipMs="
+          "Value": "sha256-o3eSt1img1Odb69cIMhq7x9WTCx0u41wNNsL0oyM4Wg="
         }
       ]
     },
     {
-      "Route": "css/Program.rxyivmu010.css",
+      "Route": "css/Program.d8jcketxsm.css",
       "AssetFile": "D:\\Lumen\\webapp\\wwwroot\\css\\Program.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -3702,7 +3702,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "40958"
+          "Value": "41004"
         },
         {
           "Name": "Content-Type",
@@ -3710,11 +3710,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"oQdZ8ql1OMD/qJC0oBGRt41XpYIxScQC7YTBu6vipMs=\""
+          "Value": "\"o3eSt1img1Odb69cIMhq7x9WTCx0u41wNNsL0oyM4Wg=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 03:13:24 GMT"
+          "Value": "Wed, 07 May 2025 19:26:32 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3724,7 +3724,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "rxyivmu010"
+          "Value": "d8jcketxsm"
         },
         {
           "Name": "label",
@@ -3732,13 +3732,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-oQdZ8ql1OMD/qJC0oBGRt41XpYIxScQC7YTBu6vipMs="
+          "Value": "sha256-o3eSt1img1Odb69cIMhq7x9WTCx0u41wNNsL0oyM4Wg="
         }
       ]
     },
     {
-      "Route": "css/Program.rxyivmu010.css.gz",
-      "AssetFile": "D:\\Lumen\\webapp\\obj\\Debug\\net9.0\\compressed\\wzmkoge2y0-rxyivmu010.gz",
+      "Route": "css/Program.d8jcketxsm.css.gz",
+      "AssetFile": "D:\\Lumen\\webapp\\obj\\Debug\\net9.0\\compressed\\wzmkoge2y0-d8jcketxsm.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3755,11 +3755,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"N2r+ham8GQ7fCs/DrW4H5ikk4/XX1kQ8bRZIQmwRruw=\""
+          "Value": "\"S2A84YCxLWYAHaViqciOqlQZBtc5JCIFGoQ/vTQdSeQ=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 07 May 2025 03:13:24 GMT"
+          "Value": "Wed, 07 May 2025 19:26:32 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3777,7 +3777,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "rxyivmu010"
+          "Value": "d8jcketxsm"
         },
         {
           "Name": "label",
@@ -3785,7 +3785,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-N2r+ham8GQ7fCs/DrW4H5ikk4/XX1kQ8bRZIQmwRruw="
+          "Value": "sha256-S2A84YCxLWYAHaViqciOqlQZBtc5JCIFGoQ/vTQdSeQ="
         }
       ]
     },

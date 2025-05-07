@@ -156,7 +156,6 @@ D:\Lumen\webapp\obj\Debug\net9.0\webapp.sourcelink.json
 D:\Lumen\webapp\obj\Debug\net9.0\scopedcss\bundle\webapp.styles.css
 D:\Lumen\webapp\obj\Debug\net9.0\compressed\ivmr4g6sta-319n5x12mn.gz
 D:\Lumen\webapp\obj\Debug\net9.0\compressed\eb47eskrpu-9pj9feylkp.gz
-D:\Lumen\webapp\obj\Debug\net9.0\compressed\wzmkoge2y0-rxyivmu010.gz
 D:\Lumen\webapp\obj\Debug\net9.0\staticwebassets.build.json
 D:\Lumen\webapp\obj\Debug\net9.0\staticwebassets.development.json
 D:\Lumen\webapp\obj\Debug\net9.0\staticwebassets.build.endpoints.json
@@ -173,3 +172,4 @@ D:\Lumen\webapp\obj\Debug\net9.0\refint\webapp.dll
 D:\Lumen\webapp\obj\Debug\net9.0\webapp.pdb
 D:\Lumen\webapp\obj\Debug\net9.0\webapp.genruntimeconfig.cache
 D:\Lumen\webapp\obj\Debug\net9.0\ref\webapp.dll
+D:\Lumen\webapp\obj\Debug\net9.0\compressed\wzmkoge2y0-d8jcketxsm.gz
