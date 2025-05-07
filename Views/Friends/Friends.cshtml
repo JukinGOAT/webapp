@@ -10,7 +10,7 @@
         @foreach (var friend in Model.Friends)
         {
             <div class="user-card">
-                <img src="@Url.Content("~/images/" + (friend.ProfileImageUrl))" alt="Profile" />
+                <img src="@Url.Content("wwwroot/images/" + (friend.ProfileImageUrl))" alt="Profile" />
                 <div>@friend.FullName</div>
                 <div>@friend.Faculty</div>
                 <form method="get" asp-controller="Messages" action="/Messages" asp-action="Index">
@@ -28,7 +28,7 @@
         @foreach (var user in Model.RecommendedUsers)
         {
             <div class="user-card">
-                <img src="@Url.Content("~/images/" + (user.ProfileImageUrl))" alt="Profile" />
+                <img src="@Url.Content("wwwroot/images/" + (user.ProfileImageUrl))" alt="Profile" />
                 <div>@user.FullName</div>
                 <div>@user.Faculty</div>
                 <form action="@Url.Action("FollowUser", "Friends")" method="post" value="@user.Id">
