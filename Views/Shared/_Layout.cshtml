@@ -95,8 +95,9 @@
                 <div class="profile-card">
                     <button class="close-button" onclick="closeProfilePopup()">×</button>
 
-                    <img class="cover-image-img" src="@Url.Content("~/wwwroot/images/" + profile?.CoverImageUrl)">
-                    <img src="@Url.Content("/wwwroot/images/" + profile?.ProfileImageUrl)" class="profile-avatar-popup" alt="Profil" />
+                    <img class="cover-image-img" src="@($"{profile?.CoverImageUrl}")">
+                    <img src="@($"/images/{profile?.ProfileImageUrl}")" class="profile-avatar-popup" alt="Profil" />
+
 
 
                     <h3>@profile?.FullName</h3>
