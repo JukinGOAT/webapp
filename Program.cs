@@ -27,10 +27,23 @@ namespace webapp
                 options.Cookie.IsEssential = true;
             });
 
-            builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+           
+builder.Services.AddDbContext<DbContext>(options =>
+{
+    var connectionString = builder.Environment.IsProduction()
+        ? Environment.GetEnvironmentVariable("DATABASE_URL")
+        : builder.Configuration.GetConnectionString("DefaultConnection");
 
-            
+
+    if (builder.Environment.IsProduction() && !string.IsNullOrEmpty(connectionString) && connectionString.Contains("postgres://"))
+    {
+        connectionString += ";SslMode=Require";
+    }
+
+    options.UseNpgsql(connectionString);
+});
+
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
