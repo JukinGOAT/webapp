@@ -22,9 +22,10 @@ namespace webapp
             builder.Services.AddDistributedMemoryCache();
             builder.Services.AddSession(options =>
             {
-                options.IdleTimeout = TimeSpan.FromHours(1);
                 options.Cookie.HttpOnly = true;
-                options.Cookie.IsEssential = true;
+                options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+                options.Cookie.SameSite = SameSiteMode.Strict;
+                options.IdleTimeout = TimeSpan.FromMinutes(30);
             });
 
             builder.Services.AddDbContext<AppDbContext>(options =>
@@ -43,7 +44,7 @@ namespace webapp
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
-            //app.UseHttpsRedirection();
+            app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseRouting();
