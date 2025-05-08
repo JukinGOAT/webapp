@@ -26,6 +26,7 @@ wwwroot\css\Fonts\static\Montserrat-Thin.ttf
 wwwroot\css\Fonts\static\Montserrat-ThinItalic.ttf
 wwwroot\css\Program.css
 wwwroot\Images\ana.jpg
+wwwroot\Images\anja.jpg
 wwwroot\Images\auforux.png
 wwwroot\Images\back.jpg
 wwwroot\Images\best2025.png
@@ -48,8 +49,13 @@ wwwroot\Images\izbori2025.png
 wwwroot\Images\jana.jpg
 wwwroot\Images\logo.png
 wwwroot\Images\marko.jpg
+wwwroot\Images\milica.jpg
+wwwroot\Images\neven.jpg
 wwwroot\Images\nina.jpg
 wwwroot\Images\prof.jpg
+wwwroot\Images\sara.jpg
+wwwroot\Images\sinisa.jpg
+wwwroot\Images\suzana.jpg
 wwwroot\Images\teo1.png
 wwwroot\Images\teo2.png
 wwwroot\Images\umag.jpg

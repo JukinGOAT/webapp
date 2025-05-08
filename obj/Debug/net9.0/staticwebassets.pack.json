@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\Images\\ana.jpg"
     },
     {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\Images\\anja.jpg",
+      "PackagePath": "staticwebassets\\Images\\anja.jpg"
+    },
+    {
       "Id": "D:\\Lumen\\webapp\\wwwroot\\Images\\auforux.png",
       "PackagePath": "staticwebassets\\Images\\auforux.png"
     },
@@ -93,12 +97,32 @@
       "PackagePath": "staticwebassets\\Images\\marko.jpg"
     },
     {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\Images\\milica.jpg",
+      "PackagePath": "staticwebassets\\Images\\milica.jpg"
+    },
+    {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\Images\\neven.jpg",
+      "PackagePath": "staticwebassets\\Images\\neven.jpg"
+    },
+    {
       "Id": "D:\\Lumen\\webapp\\wwwroot\\Images\\nina.jpg",
       "PackagePath": "staticwebassets\\Images\\nina.jpg"
     },
     {
       "Id": "D:\\Lumen\\webapp\\wwwroot\\Images\\prof.jpg",
       "PackagePath": "staticwebassets\\Images\\prof.jpg"
+    },
+    {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\Images\\sara.jpg",
+      "PackagePath": "staticwebassets\\Images\\sara.jpg"
+    },
+    {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\Images\\sinisa.jpg",
+      "PackagePath": "staticwebassets\\Images\\sinisa.jpg"
+    },
+    {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\Images\\suzana.jpg",
+      "PackagePath": "staticwebassets\\Images\\suzana.jpg"
     },
     {
       "Id": "D:\\Lumen\\webapp\\wwwroot\\Images\\teo1.png",

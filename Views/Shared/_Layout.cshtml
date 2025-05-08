@@ -281,7 +281,7 @@
         document.addEventListener("DOMContentLoaded", () => {
           document.querySelectorAll(".toggle-save-form").forEach(form => {
             form.addEventListener("submit", async evt => {
-              evt.preventDefault();
+              evt.preventDefault();  
 
               const btn   = form.querySelector(".save-btn");
               const id    = form.querySelector("input[name=id]").value;
@@ -309,10 +309,15 @@
               if (!isNowSaved && window.location.pathname.toLowerCase().includes("/home/saved")) {
                 const card = form.closest(".event-card");
                 if (card) card.remove();
+
+                const bubble = document.querySelector(`.event-bubble[data-id="${id}"]`);
+                if (bubble) bubble.remove();
               }
             });
           });
         });
     </script>
+
+    
 </body>
 </html>
