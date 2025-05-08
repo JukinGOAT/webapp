@@ -85,7 +85,7 @@
         @foreach (var e in Model.Events)
         {
             <div class="event-card">
-                <img src="@e.ImageUrl" alt="@e.Title" class="event-img" />
+                <img src="@Url.Content("~/Images/" + e.ImageUrl)" alt="@e.Title" class="event-img" />
                 <p><strong>Datum događaja:</strong> @e.DateRange</p>
                 <h3>@e.Title</h3>
                 <p>@e.Description</p>
