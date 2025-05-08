@@ -93,17 +93,16 @@
             <div id="profilePopup" class="profile-popup @(openProfile ? "active" : "")">
 
                 <div class="profile-card">
-                    <button class="close-button" onclick="closeProfilePopup()">×</button>
-
+                    <button class="pclose-button" onclick="closeProfilePopup()">×</button>
+                    <div class="profile-content">
                     <img class="cover-image-img" src="@Url.Content("~/Images/" + profile?.CoverImageUrl)">
                     <img src="@Url.Content("~/Images/" + profile?.ProfileImageUrl)" class="profile-avatar-popup" alt="Profil" />
-
 
                     <h3>@profile?.FullName</h3>
                     <p class="faculty">@profile?.Faculty @("#" + (profile?.Tag?.Split(',')?.FirstOrDefault()?.Trim() ?? ""))</p>
 
 
-                    <div class="popup-box">
+                    <div class="popup-box" >
                         <h4>O meni</h4>
                         <p>@profile?.About</p>
                     </div>
@@ -116,6 +115,7 @@
                                 <span class="tag">#@tag.Trim()</span>
                             }
                         </div>
+                    </div>
                     </div>
                 </div>
             </div>
