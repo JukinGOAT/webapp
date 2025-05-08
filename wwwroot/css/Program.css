@@ -49,7 +49,7 @@ strong {
     align-self: center;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 20px;
+    padding: 10px 20px 10px;
     border: 1px solid #ddd;
     box-sizing: border-box;
     border-radius: 20px;
@@ -170,8 +170,8 @@ strong {
     
 }
 .user-profile .profile-icon {
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     padding: 0;
     border: none;
     background: none;
@@ -183,8 +183,8 @@ strong {
 
     /* 2) make the image fill the circle and crop to fit */
 .header .user-profile .profile-icon > img {
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     object-fit: cover;
 }
 .icon-button {
@@ -495,7 +495,7 @@ strong {
         display: flex; /* Kad dodamo klasu active, prikazuj popup */
     }
     .semestar{
-        margin-top:-32px;
+        margin-top:-25px;
     }
 
 .fakultet-title {
@@ -748,9 +748,10 @@ strong {
 }
 
 .kolegij-detail {
-    padding:10px 20px;
-    background: #d1d1d1;
-    border-radius:20px;
+    padding: 10px 0px 0px 20px ;
+    background: transparent;
+    margin-top: -36px;
+    font-family: 'Montserrat', sans-serif;
 }
 
 
@@ -1262,6 +1263,7 @@ margin-top:4px;
     height: 2rem;
     background:#ddd;
     align-content:center;
+    overflow-y:hidden;
 }
 
 .comment-submit {
@@ -1388,48 +1390,91 @@ em1{
     em1:hover {
         text-decoration: underline;
     }
-.events-grid {
-    display: grid;
-    gap: 5rem;
-    grid-template-columns: repeat(auto-fit, minmax(350px,300px));
-    padding: 2rem;
+.eventss-grid {
+    
+    width: min(1000vh,100%);
+    column-count: 3;
+    margin: 0 auto;
+    gap:3rem;
+    /* ovdje ide broj stupaca, širina svake kartice je min 280px */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    padding: 10px 20px 20px 20px;
 }
+.events-grid {
+    width: min(1000px,90%);
+    columns: 2;
+    margin: 0 auto;
+    /* ovdje ide broj stupaca, širina svake kartice je min 280px */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    padding: 10px 20px 20px 20px;
+    gap: 3rem;
+    margin-bottom: 2rem;
+}
+
 
 .event-card {
     width: 400px;
-    position: relative;
     background: #fff;
-    border-radius: 12px;
-    padding: 1.5rem;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+    margin-bottom: 1rem;
+    display: block;
+    width: 100%;
     word-spacing: 0.1em;
     text-align: justify; /* poravnava obje margine */
     text-justify: inter-word;
     font-family: 'Montserrat',;
+    margin-bottom: 2rem;
+    padding: 10px 20px 20px 20px;
+    position: relative;
 }
+    
 
 .event-img {
-    width: 100%;
-    border-radius: 8px;
-    margin-bottom: 1rem;
+    width: auto !important;
+    height: auto !important;
+    /* No ako slučajno želiš da nikad ne izlazi iz okvira kartice: */
+    max-width: 100%;
+    max-height: 100%;
+    /* I da bude centrirana unutar roditelja: */
+    display: block;
+    margin: 0 auto;
+    object-fit:cover;
+    max-width:contain;
+    padding:20px 20px 10px 20px;
+    border-radius:40px;
+    
 }
-
+.event-card .event-img {
+    display: block;
+    width: 100%;
+    /* fiksiraj visinu onoliko visoku koliko želiš da kartica uvijek bude: */
+    min-height: 340px;
+    max-height: 340px;/* prilagodi po potrebi */
+    object-fit: cover; /* ovo radi magic: centralno izreže sliku */
+}
 .save-btn {
     position: absolute;
-    top: 1rem;
-    right: 1rem;
+    top: 0.7rem;
+    right: 0.7rem;
     background: #eee;
     border: none;
     border-radius: 50%;
-    width: 2rem;
-    height: 2rem;
+    width: 3rem;
+    height: 3rem;
     font-size: 1.25rem;
     cursor: pointer;
     transition: background 0.2s;
+    align-content:center;
+    align-items:center;
+    justify-content:center;
 }
 
     .save-btn:hover {
         background: #ddd;
+        opacity:0.8;
     }
     .save-btn.saved {
         background: #357ABD;
@@ -1798,8 +1843,8 @@ em1{
     transform: scale(1.1);
 }
     .chat-bubble img.avatar-popup {
-        width: 45px;
-        height: 45px;
+        width: 50px;
+        height: 50px;
         object-fit: cover;
     }
 
@@ -2100,4 +2145,14 @@ img {
     margin: 0;
     color: #555;
     font-size: .9rem;
+}
+.event-date {
+    text-align: right;
+    padding: 0 1rem 1rem;
+    color: #666;
+}
+.day.today {
+    background-color: #357ABD; /* pick your highlight color */
+    color: white;
+    border-radius: 4px;
 }

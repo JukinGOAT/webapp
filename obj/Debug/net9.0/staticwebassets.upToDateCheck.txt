@@ -50,6 +50,11 @@ wwwroot\Images\logo.png
 wwwroot\Images\marko.jpg
 wwwroot\Images\nina.jpg
 wwwroot\Images\prof.jpg
+wwwroot\Images\teo1.png
+wwwroot\Images\teo2.png
 wwwroot\Images\umag.jpg
 wwwroot\Images\uniart.png
 wwwroot\Images\unifest.png
+wwwroot\Images\vj1.png
+wwwroot\Images\vj2.png
+wwwroot\Images\vj3.png

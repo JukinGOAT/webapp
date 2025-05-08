@@ -2,28 +2,143 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewData["Title"] = "Saved";
-}
-<div class="events-grid">
-    @foreach (var e in Model.Events)
-    {
-        <div class="event-card">
-            <img src="@Url.Content("~/Images/" + e.ImageUrl)" alt="@e.Title" class="event-img" />
-            <p><strong>Datum događaja:</strong> @e.DateRange</p>
-            <h3>@e.Title</h3>
-            <p>@e.Description</p>
-            <a href="@e.Link" target="_blank" class="event-link">@e.LinkText</a>
-            <p class="event-date">@e.FullDate</p>
 
-            <form class="toggle-save-form"
-                  action="@Url.Action("ToggleSave","Home")"
-                  method="post">
-                @Html.AntiForgeryToken()
-                <input type="hidden" name="id" value="@e.Id" />
-                <button type="submit"
-                        class="save-btn @(e.IsSaved ? "saved": "")">
-                    @(e.IsSaved ? "−" : "+")
-                </button>
-            </form>
-        </div>
+    // calendar month calculation
+    var monthYear = "Svibanj 2025";
+    var year = 2025;
+    var month = 5;
+    var daysInMonth = DateTime.DaysInMonth(year, month);
+    var dow0 = (int)new DateTime(year, month, 1).DayOfWeek;
+    var startIndex = dow0 == 0 ? 6 : dow0 - 1;
+}
+<link rel="stylesheet" href="~/css/Program.css" />
+<style>
+    .saved-container {
+        display: flex;
+        align-items: flex-start; /* top-align both columns */
+        gap: 2rem;
+        padding: 1rem;
     }
+
+    .calendar-col {
+        /* fix width to something like 300px (adjust as needed) */
+        flex: 0 0 300px;
+        /* stick it 100px below top of viewport (adjust to match your navbar height) */
+        position: sticky;
+        top: 100px;
+        align-self: start; /* ensure it starts at top of flex container */
+    }
+    /* calendar styling in right column */
+    .calendar {
+        width:100%;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        overflow: hidden;
+        background: #fff;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        max-height: calc(100vh - 120px);
+        
+    }
+
+    .calendar-header {
+        background: #f5f5f5;
+        padding: .75rem;
+        text-align: center;
+        font-weight: 600;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .calendar-weekdays, .calendar-grid {
+        display: grid;
+        grid-template-columns: repeat(7,1fr);
+    }
+
+    .weekday {
+        padding: .5rem 0;
+        text-align: center;
+        font-size: .85rem;
+        color: #666;
+        border-bottom: 1px solid #eee;
+    }
+
+    .calendar-grid .day {
+        padding: .75rem 0;
+        text-align: center;
+        font-size: .9rem;
+        border-right: 1px solid #f0f0f0;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+        .calendar-grid .day:nth-child(7n) {
+            border-right: none;
+        }
+
+    .calendar-grid .empty {
+        background: #fafafa;
+        color: transparent;
+    }
+
+</style>
+
+<div class="saved-container">
+    <div class="events-grid">
+        @foreach (var e in Model.Events)
+        {
+            <div class="event-card">
+                <img src="@e.ImageUrl" alt="@e.Title" class="event-img" />
+                <p><strong>Datum događaja:</strong> @e.DateRange</p>
+                <h3>@e.Title</h3>
+                <p>@e.Description</p>
+                <a href="@e.Link" target="_blank" class="event-link">@e.LinkText</a>
+                <p class="event-date">@e.FullDate</p>
+
+                <form class="toggle-save-form"
+                      action="@Url.Action("ToggleSave","Home")"
+                      method="post">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="id" value="@e.Id" />
+                    <button type="submit"
+                            class="save-btn @(e.IsSaved ? "saved": "")">
+                        @(e.IsSaved ? "−" : "+")
+                    </button>
+                </form>
+            </div>
+        }
+    </div>
+
+    <!-- RIGHT COLUMN: fixed calendar -->
+    <div class="calendar-col">
+        <div class="calendar">
+            <div class="calendar-header">@monthYear</div>
+            <div class="calendar-weekdays">
+                @foreach (var d in new[] { "Pon", "Uto", "Sri", "Čet", "Pet", "Sub", "Ned" })
+                {
+                    <div class="weekday">@d</div>
+                }
+            </div>
+            <div class="calendar-grid">
+                @{
+                    var today = DateTime.Now;
+                    var totalCells = 7 * 6;
+                    for (int i = 0; i < totalCells; i++)
+                    {
+                        if (i < startIndex || i >= startIndex + daysInMonth)
+                        {
+                            <div class="day empty"></div>
+                            ;
+                        }
+                        else
+                        {
+                            var dayNum = (i - startIndex) + 1;
+                            var isToday = dayNum == today.Day
+                            && month == today.Month
+                            && year == today.Year;
+                            <div class="day@(isToday ? " today" : "")">@dayNum</div>
+                            ;
+                        }
+                    }
+                }
+            </div>
+        </div>
+    </div>
 </div>

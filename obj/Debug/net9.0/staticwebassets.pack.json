@@ -101,6 +101,14 @@
       "PackagePath": "staticwebassets\\Images\\prof.jpg"
     },
     {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\Images\\teo1.png",
+      "PackagePath": "staticwebassets\\Images\\teo1.png"
+    },
+    {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\Images\\teo2.png",
+      "PackagePath": "staticwebassets\\Images\\teo2.png"
+    },
+    {
       "Id": "D:\\Lumen\\webapp\\wwwroot\\Images\\umag.jpg",
       "PackagePath": "staticwebassets\\Images\\umag.jpg"
     },
@@ -111,6 +119,18 @@
     {
       "Id": "D:\\Lumen\\webapp\\wwwroot\\Images\\unifest.png",
       "PackagePath": "staticwebassets\\Images\\unifest.png"
+    },
+    {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\Images\\vj1.png",
+      "PackagePath": "staticwebassets\\Images\\vj1.png"
+    },
+    {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\Images\\vj2.png",
+      "PackagePath": "staticwebassets\\Images\\vj2.png"
+    },
+    {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\Images\\vj3.png",
+      "PackagePath": "staticwebassets\\Images\\vj3.png"
     },
     {
       "Id": "D:\\Lumen\\webapp\\wwwroot\\css\\Fonts\\Montserrat-Italic-VariableFont_wght.ttf",
