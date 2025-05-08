@@ -310,7 +310,7 @@
                 const card = form.closest(".event-card");
                 if (card) card.remove();
 
-                const bubble = document.querySelector(`.event-bubble[data-id="${id}"]`);
+                const bubble = document.querySelector(`.selected-event-cloud[data-id="${id}"]`);
                 if (bubble) bubble.remove();
               }
             });
