@@ -61,6 +61,10 @@
       "PackagePath": "staticwebassets\\Images\\fotografija.png"
     },
     {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\Images\\fran.jpg",
+      "PackagePath": "staticwebassets\\Images\\fran.jpg"
+    },
+    {
       "Id": "D:\\Lumen\\webapp\\wwwroot\\Images\\grafit.png",
       "PackagePath": "staticwebassets\\Images\\grafit.png"
     },
@@ -93,8 +97,16 @@
       "PackagePath": "staticwebassets\\Images\\logo.png"
     },
     {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\Images\\luka.jpg",
+      "PackagePath": "staticwebassets\\Images\\luka.jpg"
+    },
+    {
       "Id": "D:\\Lumen\\webapp\\wwwroot\\Images\\marko.jpg",
       "PackagePath": "staticwebassets\\Images\\marko.jpg"
+    },
+    {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\Images\\markov.jpg",
+      "PackagePath": "staticwebassets\\Images\\markov.jpg"
     },
     {
       "Id": "D:\\Lumen\\webapp\\wwwroot\\Images\\milica.jpg",
@@ -107,6 +119,14 @@
     {
       "Id": "D:\\Lumen\\webapp\\wwwroot\\Images\\nina.jpg",
       "PackagePath": "staticwebassets\\Images\\nina.jpg"
+    },
+    {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\Images\\ninas.jpg",
+      "PackagePath": "staticwebassets\\Images\\ninas.jpg"
+    },
+    {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\Images\\nives.jpg",
+      "PackagePath": "staticwebassets\\Images\\nives.jpg"
     },
     {
       "Id": "D:\\Lumen\\webapp\\wwwroot\\Images\\prof.jpg",
@@ -123,6 +143,10 @@
     {
       "Id": "D:\\Lumen\\webapp\\wwwroot\\Images\\suzana.jpg",
       "PackagePath": "staticwebassets\\Images\\suzana.jpg"
+    },
+    {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\Images\\sven.jpg",
+      "PackagePath": "staticwebassets\\Images\\sven.jpg"
     },
     {
       "Id": "D:\\Lumen\\webapp\\wwwroot\\Images\\teo1.png",
@@ -143,6 +167,10 @@
     {
       "Id": "D:\\Lumen\\webapp\\wwwroot\\Images\\unifest.png",
       "PackagePath": "staticwebassets\\Images\\unifest.png"
+    },
+    {
+      "Id": "D:\\Lumen\\webapp\\wwwroot\\Images\\vanesa.jpg",
+      "PackagePath": "staticwebassets\\Images\\vanesa.jpg"
     },
     {
       "Id": "D:\\Lumen\\webapp\\wwwroot\\Images\\vj1.png",

@@ -1751,17 +1751,18 @@ em1{
 
     .message-row.theirs {
         justify-content: flex-start;
-        
+        margin-right: 100px;
     }
 
     .message-row.mine {
         justify-content: flex-end;
-        
+        margin-left:100px;
     }
 .message-block {
     display: flex;
     flex-direction: column;
-    max-width: 100%;
+    /* maksimum jednak dostupnom prostoru minus avatar/gap */
+    max-width: calc(100% - 60px);
 }
 .avatar-sm {
     width: 40px;
@@ -1772,12 +1773,17 @@ em1{
 }
 
 .message-bubble {
-    background-color: #cce4ff;
+    /* osnovne stvari koje već imaš */
     padding: 10px 15px;
     border-radius: 18px;
     font-size: 0.95rem;
-    max-width: 100%;
-    word-wrap: break-word;
+    /* ovo je važno: */
+    display: inline-block; /* da se ponaša kao “čahura” oko teksta */
+    max-width: 500px; /* nikad ne bude širi od 400px */
+    width: auto; /* raste onoliko koliko treba */
+    white-space: normal; /* dopusti lom na razmaku */
+    word-break: normal; /* ne lomi unutar riječi */
+    overflow-wrap: break-word; /* lomi kad dosegne max-width */
 }
 
 .message-row.theirs .message-bubble {
@@ -1790,6 +1796,7 @@ em1{
     background: #cce4ff;
     color: #0062cc;
     border-bottom-right-radius: 4px;
+    
 }
 
 .message-time {
