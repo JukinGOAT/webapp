@@ -55,7 +55,7 @@ strong {
     border-radius: 20px;
     height: 60px;
     box-shadow: 1px 3px rgba(0,0,0,0.08);
-    flex-shrink: 1;
+    
 }
 
 .logo {
@@ -64,6 +64,7 @@ strong {
     text-decoration: none;
     margin-right: auto;
     cursor: pointer;
+    flex: 1 1 auto;
 }
 
     .logo img {
@@ -85,10 +86,10 @@ strong {
 .top-nav {
     font-family: 'Montserrat', sans-serif;
     display: flex;
-    align-items: center;
+    justify-content:end;
     gap: 10px;
     margin: 0 30px;
-    flex-shrink: 1;
+    flex: 1 1 auto ;
 }
 
 .top-nav-button {
@@ -102,6 +103,8 @@ strong {
     color: black;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
+    flex: 0 0 auto;
+    white-space: nowrap;
 }
 
     .top-nav-button:hover {
@@ -113,23 +116,24 @@ strong {
 .search-container {
     font-family: 'Montserrat', sans-serif;
     position: relative;
-    display: flex;
-    align-items: center;
-    flex-shrink: 1;
+    flex: 1 1 200px; /* osnovna širina 200px, može rasti i shrink-ati */
+    max-width: 200px; /* ne želimo da previše naraste */
+    min-width: 120px; /* ne želimo da bude ispod 120px */
+    position: relative;
+    
 }
 
     .search-container input {
-        flex-shrink: 1;
-        font-family: 'Montserrat', sans-serif;
-        padding: 5px 10px 5px 30px;
+        width: 100%;
+        box-sizing: border-box;
         border-radius: 20px;
-        border: 1px solid #ccc;
+        border: 0px solid #ccc;
         box-shadow: 1px 2px rgba(0,0,0,0.08);
     }
 
 .search-icon {
     position: absolute;
-    left: 10px;
+    left: -10px;
     font-size: 14px;
     color: #888;
 }
@@ -139,7 +143,10 @@ strong {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-shrink: 1;
+    flex: 0 1 auto;
+}
+.header * {
+    min-width: 0; /* važno za flex-shrink da stvarno shrink-a */
 }
     
 /* ===========================
@@ -161,13 +168,17 @@ strong {
 .rightbar {
     margin-top: 5px;
     width: 70px;
-    background-color: #f5f5f5;
+    background-color: transparent;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 20px 10px;
     gap: 10px;
-    
+    flex-shrink: 0;
+    position: fixed; /* ili kako god već imaš */
+    right: 10px;
+    top:70px;
+    bottom: 0;
 }
 .user-profile .profile-icon {
     width: 50px;
@@ -264,7 +275,9 @@ strong {
     font-family: 'Montserrat', sans-serif;
     flex: 1;
     padding: 0px 10px 10px 15px;
-    
+    min-width: 0; /* vrlo važno da djeca mogu SHRINK-ati */
+    overflow-x: auto;
+    margin-right:60px;
 }
 
 
@@ -345,30 +358,43 @@ strong {
     border-radius: 20px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     align-items:center;
+    
 
+}
+.section-title {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    font-size: 1.5rem;
+}
+
+.section-count {
+    font-size: 1rem;
+    color: #666;
 }
 
 .card-container {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap; /* NE dozvoli wrapanje u novi red */
+    overflow-x: auto; /* pojavi horizontalni scrollbar kad nema mjesta */
     gap: 20px;
+    padding: 10px 20px;
+    /* opciono: malo „ugiši” marginu sa strana da scrollbar ne odskače */
+    margin: 0 -20px;
 }
 
 .user-card {
-    width: 160px;
-    height: 200px;
+    flex: 0 1 160px; /* flex-grow:0 (ne raste), flex-shrink:1 (može se smanjiti), flex-basis:160px */
+    min-width: 120px; /* ne mogu se smanjiti ispod 120px */
+    height: 200px; /* fiksna visina */
     border-radius: 12px;
-    padding: 10px 5px 10px 5px;
+    padding: 10px;
     text-align: center;
-    background-color: white;
-    box-shadow: 2px 2px 6px rgba(0.1,0.1,0.1,0.3);
-    
-    transition: transform 0.2s ease-in-out;
-    align-content: center;
-    align-items: center;
-    justify-items: center;
+    background: #fff;
+    box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 }
 
     .user-card:hover {
@@ -1410,17 +1436,28 @@ em1{
     em1:hover {
         text-decoration: underline;
     }
-.eventss-grid {
-    width: min(1300px,100%);
-    column-count: 3;
-    margin: 0 auto;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    padding: 10px 20px 20px 20px;
+.saved-container {
+    display: flex;
+    align-items: flex-start; /* top-align both columns */
     gap: 2rem;
-    margin-bottom: 2rem;
-    justify-content: space-evenly;
+    padding: 1rem 0px 0px 0px;
+    overflow: auto;
+    align-content:space-around;
+}
+.eventss-grid {
+    display:flex;
+    max-width: 400px;
+    min-width: 100%;
+    column-count: 3;
+    column-gap: 2rem;
+    margin: 0 auto;
+    padding: 1rem;
+    gap: 2rem;
+    overflow: auto;
+    flex-wrap:wrap;
 }
 .events-grid {
+    display: flex;
     width: min(1000px,90%);
     columns: 2;
     margin: 0 auto;
@@ -1428,29 +1465,30 @@ em1{
     padding: 10px 20px 20px 20px;
     gap: 2rem;
     margin-bottom: 2rem;
+    flex-wrap: wrap;
 }
 
 
 .event-card {
-    flex-shrink:0;
-    width: 400px;
+    display:flex;
+    max-width:400px;
     background: #fff;
     border: 1px solid #ddd;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 2px 6px rgba(0,0,0,0.4);
-    
-    display: block;
-    
+    display: inline-block;
     word-spacing: 0.1em;
     text-align: justify; /* poravnava obje margine */
     text-justify: inter-word;
     font-family: 'Montserrat',;
-    margin-bottom: 2rem;
-    padding: 10px 20px 20px 20px;
+    margin: 0 0 2rem;
+    padding: 1rem;
     position: relative;
-    break-inside:avoid;
-    margin-right:10px;
+    break-inside: avoid;
+    
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
 }
     
 
@@ -1670,6 +1708,7 @@ em1{
 .chat-header {
     padding: 16px 24px;
     margin-top: 20px;
+    margin-right:20px;
     background: white;
     border-radius: 20px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
