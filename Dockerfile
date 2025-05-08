@@ -11,6 +11,17 @@ RUN dotnet publish "webapp.csproj" -c Release -o /app/publish
 # Use the ASP.NET Core runtime image for the final app
 FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS final
 WORKDIR /app
+
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends tzdata \
+ && ln -fs /usr/share/zoneinfo/Europe/Zagreb /etc/localtime \
+ && echo "Europe/Zagreb" > /etc/timezone \
+ && dpkg-reconfigure --frontend noninteractive tzdata \
+ && apt-get clean \
+ && rm -rf /var/lib/apt/lists/*
+
+ ENV TZ=Europe/Zagreb
+
 COPY --from=build /app/publish .
 EXPOSE 8080
 ENV ASPNETCORE_URLS=http://+:8080
