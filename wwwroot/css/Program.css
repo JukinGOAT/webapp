@@ -768,6 +768,7 @@ strong {
     background: rgba(0,0,0,0.4);
     overflow: visible; /* važno da button ne bude clipping */
     z-index: 1000;
+    justify-content: space-around;
 }
 
     .profile-popup.active {
@@ -776,16 +777,18 @@ strong {
 
 .profile-card {
     position: relative; /* referenca za apsolutno pozicioniranje buttona */
-    width: 100%;
-    width: 35%;
-    height: 90%;
+    
+    min-height: 90%;
+    max-width: 30%;
+    max-height: 90%;
     background: #fff;
     border-radius: 20px;
     box-shadow: 0 8px 24px rgba(0,0,0,0.15);
     font-family: 'Montserrat', sans-serif;
     z-index: 1001;
-    flex-shrink:0;
+    flex-shrink: 0;
     overflow: visible;
+    
 }
     .profile-card h3 {
         text-align: center;
@@ -813,6 +816,8 @@ strong {
     object-fit: cover;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
+    
+    
 }
 
 .profile-avatar-popup {
