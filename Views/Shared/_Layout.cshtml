@@ -159,7 +159,9 @@
                         <div class="chat-bubble">
                             <a href="@Url.Action("Index", "Messages", new { chatWithId = user.Id })">
                                 <img src="~/Images/@user.ProfileImageUrl" class="avatar-popup" />
+                                <span class="chat-status @(user.IsOnline ? "online" : "offline")"></span>
                             </a>
+                            
                         </div>
                     }
                 }

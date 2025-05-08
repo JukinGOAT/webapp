@@ -28,10 +28,12 @@ public class HomeController : Controller
             .ToList();
 
         var chatPartners = messages
-            .Select(m => m.SenderId == currentUser.Id ? m.Receiver : m.Sender)
-            .Distinct()
-            .Take(3) // do 3 najnovija
-            .ToList();
+            .GroupBy(m => m.SenderId == currentUser.Id ? m.Receiver : m.Sender)
+        .Select(g => new { User = g.Key, Last = g.Max(x => x.SentAt) })
+        .OrderByDescending(x => x.Last)
+        .Select(x => x.User)
+        .Take(3)
+        .ToList();
 
         ViewBag.ActiveChats = chatPartners.Take(3).ToList();
         // Query your real events
@@ -102,12 +104,15 @@ public class HomeController : Controller
             .ToList();
 
         var chatPartners = messages
-            .Select(m => m.SenderId == currentUser.Id ? m.Receiver : m.Sender)
-            .Distinct()
-            .Take(3) // do 3 najnovija
-            .ToList();
+            .GroupBy(m => m.SenderId == currentUser.Id ? m.Receiver : m.Sender)
+        .Select(g => new { User = g.Key, Last = g.Max(x => x.SentAt) })
+        .OrderByDescending(x => x.Last)
+        .Select(x => x.User)
+        .Take(3)
+        .ToList();
 
-        ViewBag.ActiveChats = chatPartners.Take(3).ToList();
+
+        ViewBag.ActiveChats = chatPartners;
         var vm = new HomePageViewModel
         {
             Profile = profile,

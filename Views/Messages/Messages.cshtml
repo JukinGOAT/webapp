@@ -11,11 +11,13 @@
     <aside class="chat-sidebar">
         <header>
             <h2>Chatroom</h2>
+            
         </header>
+        <div class="sidebar-divider"></div>
         <ul class="contacts-list">
             @foreach (var c in Model.Contacts)
             {
-                <div class="sidebar-divider"></div>
+                
                 var isActive = (Model.ActiveChatUserId == c.Id);
                 <li class="chat-contact contact-card @(isActive ? "active" : "")">
                     <a href="@Url.Action("Index", "Messages", new { chatWithId = c.Id })">
@@ -28,11 +30,12 @@
                         <div class="chat-contact-info">
                             <div class="chat-contact-name">@c.FullName</div>
                             <div class="chat-contact-preview">
-                                @("...") <!-- kasnije možeš ubaciti pravi preview -->
+                                @Model.LastMessagePreview.GetValueOrDefault(c.Id, "—")
                             </div>
                         </div>
                     </a>
                 </li>
+                <div class="sidebar-divider"></div>
             }
         </ul>
 

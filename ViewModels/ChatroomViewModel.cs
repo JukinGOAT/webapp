@@ -17,5 +17,6 @@ namespace webapp.ViewModels
         public Profile Me { get; set; }
         public Profile Profile { get; set; }
         public string Body { get; set; }
+        public Dictionary<int, string> LastMessagePreview { get; set; }
     }
 }

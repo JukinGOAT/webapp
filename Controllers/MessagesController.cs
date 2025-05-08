@@ -77,14 +77,24 @@ namespace webapp.Controllers
                         contacts.Insert(0, userToAdd); 
                 }
             }
-
+            var lastMessagePreview = contacts.ToDictionary(
+       c => c.Id,
+       c => messages
+               .Where(m =>
+                   (m.SenderId == currentUser.Id && m.ReceiverId == c.Id) ||
+                   (m.ReceiverId == currentUser.Id && m.SenderId == c.Id))
+               .OrderByDescending(m => m.SentAt)
+               .Select(m => m.Body)
+               .FirstOrDefault() ?? ""
+   );
             var vm = new ChatroomViewModel
             {
                 Profile = profile,
                 Me = currentUser,
                 Contacts = contacts,
                 ActiveChatUserId = chatWithId,
-                History = chatHistory
+                History = chatHistory,
+                LastMessagePreview=lastMessagePreview
             };
 
             if (TempData["OpenProfilePopup"] is bool show && show)

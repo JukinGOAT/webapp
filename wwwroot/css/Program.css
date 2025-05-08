@@ -1831,7 +1831,7 @@ em1{
 }
 
 .chat-bubble {
-    
+    position:relative;
     border-radius: 50%;
     overflow: hidden;
     background: transparent;
@@ -1950,12 +1950,14 @@ img {
 
 .chat-status {
     position: absolute;
-    bottom: 2px;
-    right: 2px;
-    width: 12px;
-    height: 12px;
-    border: 2px solid white;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
+    background-color: #4caf50; /* zelena za online */
+    bottom: 2px; /* malo odmakni od dna */
+    right: 2px; /* malo odmakni od desnog ruba */
+    opacity: 1 !important; /* obavezno da prepiše eventualni hover-stil */
+    transition: none; /* ukloni fade-in/out ako ne želiš animaciju */
 }
 
     .chat-status.online {
@@ -2159,3 +2161,14 @@ img {
     color: white;
     border-radius: 4px;
 }
+
+aside.chat-sidebar header {
+    text-align: center !important;
+    padding: 1rem 0; /* po želji dodaš vertikalnog razmaka */
+    margin: 0 auto;
+}
+
+    aside.chat-sidebar header h2 {
+        margin: 0; /* ukloni defaultne margine */
+        display: inline-block; /* ne čini h2 punom širinom */
+    }
