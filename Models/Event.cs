@@ -1,5 +1,4 @@
-﻿// Models/Event.cs
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace webapp.Models

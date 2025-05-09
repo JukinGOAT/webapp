@@ -21,9 +21,7 @@ namespace webapp.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            // privremeni korisnik
-            
-            var currentUser = _context.UserProfiles.FirstOrDefault(); // simulacija prijavljenog
+            var currentUser = _context.UserProfiles.FirstOrDefault();
             var messages = _context.Messages
                 .Where(m => m.SenderId == currentUser.Id || m.ReceiverId == currentUser.Id)
                 .Include(m => m.Sender)
@@ -40,10 +38,8 @@ namespace webapp.Controllers
 
             ViewBag.ActiveChats = chatPartners.Take(3).ToList();
 
-            // svi profili osim sebe
             var allUsers = _context.UserProfiles.Where(p => p.Id != currentUser.Id).ToList();
 
-            // prijatelji
             var friendIds = _context.Friendships
                 .Where(f => f.UserId == currentUser.Id)
                 .Select(f => f.FriendId)
@@ -73,7 +69,7 @@ namespace webapp.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult FollowUser(int id)
         {
-            var currentUser = _context.UserProfiles.FirstOrDefault(); // simulacija prijavljenog
+            var currentUser = _context.UserProfiles.FirstOrDefault();
             
 
             if (!_context.Friendships.Any(f => f.UserId == currentUser.Id && f.FriendId == id))

@@ -9,7 +9,7 @@ public class ProfileController : Controller
 {
     public IActionResult Index()
     {
-        ViewBag.OpenProfilePopup = false; // popup nije otvoren po defaultu
+        ViewBag.OpenProfilePopup = false; 
         return View();
     }
 

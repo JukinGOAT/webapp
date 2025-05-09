@@ -14,13 +14,12 @@ public class HomeController : Controller
     }
     private const string SAVED_KEY = "SavedEvents";
 
-    // GET: /Home/Index
     [HttpGet]
     public async Task<IActionResult> Index()
     {
         var profile = await _context.UserProfiles.FirstOrDefaultAsync();
         var saved = HttpContext.Session.GetObject<List<int>>(SAVED_KEY) ?? new List<int>();
-        var currentUser = _context.UserProfiles.FirstOrDefault(); // simulacija prijavljenog
+        var currentUser = _context.UserProfiles.FirstOrDefault(); 
         var messages = _context.Messages
             .Where(m => m.SenderId == currentUser.Id || m.ReceiverId == currentUser.Id)
             .Include(m => m.Sender)
@@ -36,9 +35,7 @@ public class HomeController : Controller
         .ToList();
 
         ViewBag.ActiveChats = chatPartners.Take(3).ToList();
-        // Query your real events
-
-
+        
         var vm = new HomePageViewModel
         {
             Profile = profile,
@@ -68,7 +65,6 @@ public class HomeController : Controller
         return View("Home", vm);
     }
 
-    // POST: /Home/ToggleSave/5
     [HttpPost]
     [ValidateAntiForgeryToken]
     public IActionResult ToggleSave(int id)
@@ -81,11 +77,9 @@ public class HomeController : Controller
 
         HttpContext.Session.SetObject(SAVED_KEY, saved);
 
-        // vrati se na index ili saved ovisno od referera
         return Redirect(Request.Headers["Referer"].ToString());
     }
 
-    // HomeController.cs
     [HttpGet]
     public async Task<IActionResult> Saved()
     {
@@ -96,7 +90,7 @@ public class HomeController : Controller
                           .Where(e => savedIds.Contains(e.Id))
                           
                           .ToListAsync();
-        var currentUser = _context.UserProfiles.FirstOrDefault(); // simulacija prijavljenog
+        var currentUser = _context.UserProfiles.FirstOrDefault();
         var messages = _context.Messages
             .Where(m => m.SenderId == currentUser.Id || m.ReceiverId == currentUser.Id)
             .Include(m => m.Sender)
@@ -120,7 +114,7 @@ public class HomeController : Controller
             {
                 Id = e.Id,
                 Title = e.Title,
-                DateRange = e.DateRange,                           // string from DB
+                DateRange = e.DateRange,  
                 Description = e.Description,
                 Link = e.Link,
                 LinkText = "Za više informacija…",

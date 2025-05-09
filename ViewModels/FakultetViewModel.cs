@@ -15,7 +15,7 @@ namespace webapp.ViewModels
         public Profile Profile { get; set; }
         public string ActiveTab { get; set; }
         public List<Kolegij> Kolegiji { get; set; }
-        public Kolegij? AktivniKolegij { get; set; } // Za detaljni prikaz
+        public Kolegij? AktivniKolegij { get; set; } 
         public List<Group> MemberGroups { get; set; } = new();
 
         public List<Group> OtherGroups { get; set; } = new();

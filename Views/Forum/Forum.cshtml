@@ -35,7 +35,6 @@
                     <button type="submit" class="comment-submit">⮞</button>
                 </form>
 
-                <!-- OVDJE inline komentari, po defaultu sakriveni -->
                 <div class="comments-list" style="display:none;">
                     @if (p.Comments.Count == 0)
                     {
@@ -73,7 +72,7 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // za svaki link "view-comments" toggleaj prikaz .comments-list u istoj kartici
+      
       document.querySelectorAll('.view-comments').forEach(link => {
         link.addEventListener('click', e => {
           e.preventDefault();
@@ -94,7 +93,6 @@
         const plus  = card.querySelector('.plus-button');
         const minus = card.querySelector('.minus-button');
 
-        // Minus i plus ne mogu biti aktivni istovremeno
         plus.addEventListener('click', () => {
           minus.classList.remove('active');
           plus.classList.toggle('active');

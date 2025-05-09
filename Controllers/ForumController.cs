@@ -14,14 +14,12 @@ namespace webapp.Controllers
             _context = context;
         }
 
-        // GET: /Forum
         [HttpGet]
         public IActionResult Index()
         {
 
-            // load the (first) user profile — replace with your own "current user" lookup
             var profile = _context.UserProfiles.FirstOrDefault();
-            var currentUser = _context.UserProfiles.FirstOrDefault(); // simulacija prijavljenog
+            var currentUser = _context.UserProfiles.FirstOrDefault(); 
             var messages = _context.Messages
                 .Where(m => m.SenderId == currentUser.Id || m.ReceiverId == currentUser.Id)
                 .Include(m => m.Sender)
@@ -48,21 +46,19 @@ namespace webapp.Controllers
                 .ToList()
             };
 
-            // if you need to auto-open the profile popup:
             if (TempData["OpenProfilePopup"] is bool popupFlag && popupFlag)
                 ViewBag.OpenProfilePopup = true;
 
             return View("Forum", vm);
         }
 
-        // POST: /Forum/Create
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(string newContent)
         {
             if (!string.IsNullOrWhiteSpace(newContent))
-            {
-                // grab the current user's profile (or use your real auth principal)
+            { 
                 var user = _context.UserProfiles.FirstOrDefault();
 
                 _context.ForumPosts.Add(new ForumPost
@@ -77,7 +73,7 @@ namespace webapp.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        // POST: /Forum/AddComment
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult AddComment(int postId, string content)
@@ -99,7 +95,7 @@ namespace webapp.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        // GET: /Forum/ViewComments/5
+        
         [HttpGet]
         public IActionResult ViewComments(int id)
         {

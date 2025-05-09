@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="~/css/chat.css" />
 
 <div class="chat-container">
-    <!-- Sidebar -->
+    
     <aside class="chat-sidebar">
         <header>
             <h2>Chatroom</h2>
@@ -42,8 +42,6 @@
         
     </aside>
 
-
-    <!-- Chat window -->
     <section class="chat-window">
         @if (Model.ActiveChatUserId != null && Model.Contacts.Any(c => c.Id == Model.ActiveChatUserId))
         {

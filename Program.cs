@@ -18,7 +18,6 @@ namespace webapp
             var builder = WebApplication.CreateBuilder(args);
             builder.Services.AddControllersWithViews();
 
-            // 2) Registriraj cache i session
             builder.Services.AddDistributedMemoryCache();
             builder.Services.AddSession(options =>
             {
@@ -34,7 +33,6 @@ namespace webapp
             
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

@@ -3,7 +3,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewData["Title"] = "Saved";
 
-    // calendar month calculation
     var monthYear = "Svibanj 2025";
     var year = 2025;
     var month = 5;
@@ -93,13 +92,13 @@
         }
 
     .bubble-date {
-        flex: 0 0 80px; /* fiksna širina kolone za datum */
+        flex: 0 0 80px; 
         font-weight: 600;
         color: #333;
     }
 
     .bubble-title {
-        flex: 1; /* zauzima ostatak prostora */
+        flex: 1; 
         color: #333;
     }
 </style>
@@ -130,7 +129,6 @@
         }
     </div>
 
-    <!-- RIGHT COLUMN: fixed calendar -->
     <div class="calendar-col">
         <div class="calendar">
             <div class="calendar-header">@monthYear</div>

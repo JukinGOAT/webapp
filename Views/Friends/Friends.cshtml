@@ -15,7 +15,7 @@
             <div class="user-card">
                 <img src="@Url.Content("~/Images/" + (friend.ProfileImageUrl))" alt="Profile" />
                 <div>@friend.FullName</div>
-                <div>@friend.Faculty</div>
+                <div class="faculty-name">@friend.Faculty</div>
                 <form method="get" asp-controller="Messages" action="/Messages" asp-action="Index">
                     <input type="hidden" name="chatWithId" value="@friend.Id" />
                     <button type="submit">Pošalji poruku</button>
@@ -33,7 +33,7 @@
             <div class="user-card">
                 <img src="@Url.Content("~/Images/" + (user.ProfileImageUrl))" alt="Profile" />
                 <div>@user.FullName</div>
-                <div>@user.Faculty</div>
+                <div class="faculty-name">@user.Faculty</div>
                 <form action="@Url.Action("FollowUser", "Friends")" method="post" value="@user.Id">
                     <input type="hidden" name="id" value="@user.Id" />
                     @Html.AntiForgeryToken()
