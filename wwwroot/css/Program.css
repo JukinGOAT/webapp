@@ -691,9 +691,11 @@ strong {
     border-radius: 14px;
     box-shadow: 0 1px 4px rgba(0,0,0,0.1);
 }
-.fcard:hover {
-    background-color: #a8a8a8;
-}
+    .fcard:hover {
+        background-color: #a8a8a8;
+        cursor: pointer;
+    }
+
 
 .fcard.active {
     background-color: #a1a1a1;
