@@ -384,8 +384,8 @@ strong {
 }
 
 .user-card {
-    flex: 0 1 160px; /* flex-grow:0 (ne raste), flex-shrink:1 (može se smanjiti), flex-basis:160px */
-    min-width: 120px; /* ne mogu se smanjiti ispod 120px */
+    flex: 0 0 160px; /* flex-grow:0 (ne raste), flex-shrink:1 (može se smanjiti), flex-basis:160px */
+    min-width: 160px; /* ne mogu se smanjiti ispod 120px */
     height: 200px; /* fiksna visina */
     border-radius: 12px;
     padding: 10px;
